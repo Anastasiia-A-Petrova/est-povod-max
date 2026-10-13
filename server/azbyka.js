@@ -7,8 +7,10 @@ const BASE_URL = 'https://azbyka.ru/days'
 const PORT = Number(process.env.PORT) || 3001
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN
+
 const PUBLIC_BASE_URL =
-  process.env.PUBLIC_BASE_URL || 'https://est-povod-api.onrender.com'
+  process.env.PUBLIC_BASE_URL ||
+  'https://est-povod-max-api.layero.app'
 
 const telegramFiles = new Map()
 
@@ -773,7 +775,7 @@ const server =
 
           const baseUrl =
             process.env.PUBLIC_BASE_URL ||
-            'https://est-povod-api.onrender.com'
+            'https://est-povod-max-api.layero.app'
 
           const downloadUrl =
             `${baseUrl}/api/telegram/download/${fileId}`
