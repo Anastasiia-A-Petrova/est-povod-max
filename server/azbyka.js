@@ -776,7 +776,7 @@ const server =
 
           const baseUrl =
             process.env.PUBLIC_BASE_URL ||
-            'https://est-povod-max-api.layero.app'
+            'https://est-povod-max-api-main.layero.app'
 
           const downloadUrl =
             `${baseUrl}/api/download/${fileId}`

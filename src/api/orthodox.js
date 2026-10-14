@@ -1,5 +1,5 @@
 const ORTHODOX_API =
-  'https://est-povod-max-api.layero.app/api/orthodox'
+  'https://est-povod-max-api.layero-main.app/api/orthodox'
 
 export async function getOrthodoxDate(date) {
 const response = await fetch(

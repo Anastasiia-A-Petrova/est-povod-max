@@ -3,7 +3,7 @@ import { toPng, toBlob } from 'html-to-image'
 import './CardCreator.css'
 
 const API_URL =
-  'https://est-povod-max-api.layero.app'
+  'https://est-povod-max-api-main.layero.app'
 
 const IMAGE_PROXY_URL =
   `${API_URL}/api/image-proxy`
@@ -792,18 +792,11 @@ function CardCreator({
         }
 
         try {
-          await navigator.clipboard.writeText(
+          await maxWebApp.downloadFile(
             data.downloadUrl,
+            fileName,
           )
-
-          alert(
-            'Ссылка скопирована.\n\n' +
-              'Откройте браузер телефона и вставьте её в адресную строку.',
-          )
-
-          return
         } catch (error) {
-
           console.error(
             'MAX downloadFile error:',
             error,
