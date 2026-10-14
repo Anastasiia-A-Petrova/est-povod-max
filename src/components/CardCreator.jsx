@@ -792,18 +792,14 @@ function CardCreator({
         }
 
         try {
-          alert(
-            'Ссылка для скачивания:\n\n' +
-              data.downloadUrl +
-              '\n\nИмя файла:\n' +
-              fileName,
-          )
+          window.open(data.downloadUrl, '_blank')
 
           await maxWebApp.downloadFile(
             data.downloadUrl,
             fileName,
           )
         } catch (error) {
+
           console.error(
             'MAX downloadFile error:',
             error,
