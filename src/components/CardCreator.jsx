@@ -3,7 +3,7 @@ import { toPng, toBlob } from 'html-to-image'
 import './CardCreator.css'
 
 const API_URL =
-  'https://est-povod-max-api-main.layero.app'
+  'https://est-povod-max-api.layero.app'
 
 const IMAGE_PROXY_URL =
   `${API_URL}/api/image-proxy`
@@ -485,7 +485,7 @@ function CardCreator({
   const shareCaption = [
     '☀️ Открытка создана в приложении «ЕСТЬ ПОВОД!»',
     `🔎 Подробнее о празднике: ${infoUrl || 'Ссылка не указана'}`,
-    '🌐 Сайт «ЕСТЬ ПОВОД!»: https://est-povod-main.layero.app/',
+    '🌐 Сайт «ЕСТЬ ПОВОД!»: https://est-povod.layero.app/',
   ].join('\n\n')
 
   /*
@@ -718,27 +718,23 @@ function CardCreator({
       )
 
       /*
-      * Определяем, запущено ли приложение
-      * внутри MAX.
+      * =====================================================
+      * MAX MINI APP
+      * =====================================================
+      *
+      * Не используем downloadFile.
+      *
+      * Отправляем готовую открытку на backend,
+      * получаем обычную HTTPS-ссылку и открываем
+      * её во внешнем браузере телефона.
       */
-      const maxWebApp =
-        window.WebApp
+      const maxWebApp = window.WebApp
 
       const isMaxApp =
         maxWebApp &&
-        typeof maxWebApp.downloadFile ===
-          'function' &&
-        maxWebApp.initData
+        maxWebApp.initData &&
+        typeof maxWebApp.openLink === 'function'
 
-      /*
-      * =====================================================
-      * MAX
-      * =====================================================
-      *
-      * MAX Bridge не умеет принимать Blob напрямую.
-      * Поэтому отправляем изображение на backend,
-      * получаем HTTPS-ссылку и передаём её MAX Bridge.
-      */
       if (isMaxApp) {
         const imageBase64 =
           await new Promise(
@@ -777,8 +773,7 @@ function CardCreator({
           },
         )
 
-        const data =
-          await response.json()
+        const data = await response.json()
 
         if (
           !response.ok ||
@@ -791,23 +786,13 @@ function CardCreator({
           )
         }
 
-        try {
-          await maxWebApp.downloadFile(
-            data.downloadUrl,
-            fileName,
-          )
-        } catch (error) {
-          console.error(
-            'MAX downloadFile error:',
-            error,
-          )
-
-          throw new Error(
-            error?.error?.code ||
-              error?.message ||
-              'MAX не смог скачать файл',
-          )
-        }
+        /*
+        * Открываем серверную ссылку
+        * во внешнем браузере через MAX Bridge.
+        */
+        maxWebApp.openLink(
+          data.downloadUrl,
+        )
 
         return
       }
@@ -817,9 +802,8 @@ function CardCreator({
       * ОБЫЧНЫЙ БРАУЗЕР
       * =====================================================
       *
-      * Здесь backend вообще не нужен.
-      * У нас уже есть готовый Blob,
-      * поэтому сохраняем его напрямую.
+      * Backend здесь не нужен.
+      * Сохраняем уже созданный Blob напрямую.
       */
       const blobUrl =
         URL.createObjectURL(blob)
