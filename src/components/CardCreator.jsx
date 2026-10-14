@@ -792,12 +792,16 @@ function CardCreator({
         }
 
         try {
-          window.open(data.downloadUrl, '_blank')
-
-          await maxWebApp.downloadFile(
+          await navigator.clipboard.writeText(
             data.downloadUrl,
-            fileName,
           )
+
+          alert(
+            'Ссылка скопирована.\n\n' +
+              'Откройте браузер телефона и вставьте её в адресную строку.',
+          )
+
+          return
         } catch (error) {
 
           console.error(
