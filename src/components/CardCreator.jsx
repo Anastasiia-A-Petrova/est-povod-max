@@ -792,6 +792,13 @@ function CardCreator({
         }
 
         try {
+          alert(
+            'Ссылка для скачивания:\n\n' +
+              data.downloadUrl +
+              '\n\nИмя файла:\n' +
+              fileName,
+          )
+
           await maxWebApp.downloadFile(
             data.downloadUrl,
             fileName,
