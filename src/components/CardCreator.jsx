@@ -535,6 +535,18 @@ function CardCreator({
     )
   }
 
+  const getExportBackground = () => {
+    if (style === 'warm') {
+      return selectedWarmColor.value
+    }
+
+    if (style === 'minimal') {
+      return selectedMinimalColor.value
+    }
+
+    return undefined
+  }
+
   /*
    * Небольшая пауза перед экспортом.
    *
@@ -689,7 +701,7 @@ function CardCreator({
       const blob = await toBlob(card, {
         pixelRatio: 2,
         cacheBust: true,
-        backgroundColor: '#ffffff',
+        backgroundColor: getExportBackground(),
         imagePlaceholder:
           'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=',
       })
@@ -812,7 +824,7 @@ function CardCreator({
       const pngBlob = await toBlob(card, {
         pixelRatio: 2,
         cacheBust: true,
-        backgroundColor: '#ffffff',
+        backgroundColor: getExportBackground(),
         imagePlaceholder:
           'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=',
       })
