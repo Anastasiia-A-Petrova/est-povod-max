@@ -731,9 +731,11 @@ function CardCreator({
       const maxWebApp = window.WebApp
 
       const isMaxApp =
-        maxWebApp &&
-        maxWebApp.initData &&
-        typeof maxWebApp.openLink === 'function'
+        Boolean(
+          maxWebApp &&
+          maxWebApp.initData &&
+          typeof maxWebApp.openLink === 'function',
+        )
 
       if (isMaxApp) {
         const imageBase64 =
@@ -778,7 +780,8 @@ function CardCreator({
         if (
           !response.ok ||
           !data.ok ||
-          !data.downloadUrl
+          !data.downloadUrl ||
+          !data.viewUrl
         ) {
           throw new Error(
             data.error ||
@@ -787,11 +790,14 @@ function CardCreator({
         }
 
         /*
-        * Открываем серверную ссылку
-        * во внешнем браузере через MAX Bridge.
+        * Открываем страницу с открыткой.
+        *
+        * На телефоне MAX пользователь сможет
+        * нажать и удерживать изображение и
+        * сохранить его в галерею.
         */
         maxWebApp.openLink(
-          data.downloadUrl,
+          data.viewUrl,
         )
 
         return

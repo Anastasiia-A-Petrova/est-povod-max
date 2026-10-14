@@ -781,6 +781,9 @@ const server =
           const downloadUrl =
             `${baseUrl}/api/download/${fileId}`
 
+          const viewUrl =
+            `${baseUrl}/api/view/${fileId}`
+
           response.writeHead(200, {
             'Content-Type':
               'application/json; charset=utf-8',
@@ -793,6 +796,7 @@ const server =
             JSON.stringify({
               ok: true,
               downloadUrl,
+              viewUrl,
             }),
           )
         } catch (error) {
@@ -874,7 +878,222 @@ const server =
 
         return
       }
-    
+   
+      if (
+        request.method === 'GET' &&
+        request.url.startsWith(
+          '/api/view/',
+        )
+      ) {
+        const fileId =
+          request.url
+            .split('/api/view/')[1]
+            ?.split('?')[0]
+
+        const file =
+          storedFiles.get(fileId)
+
+        if (
+          !file ||
+          file.expiresAt < Date.now()
+        ) {
+          response.writeHead(404, {
+            'Content-Type':
+              'text/html; charset=utf-8',
+          })
+
+          response.end(`
+  <!doctype html>
+  <html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    >
+    <title>Открытка недоступна</title>
+  </head>
+
+  <body>
+    <main>
+      <h1>Открытка недоступна</h1>
+
+      <p>
+        Срок ссылки истёк или открытка
+        больше не хранится на сервере.
+      </p>
+    </main>
+  </body>
+  </html>
+          `)
+
+          return
+        }
+
+        const imageUrl =
+          `/api/view-image/${fileId}`
+
+        response.writeHead(200, {
+          'Content-Type':
+            'text/html; charset=utf-8',
+
+          'Cache-Control':
+            'no-store',
+        })
+
+        response.end(`
+  <!doctype html>
+  <html lang="ru">
+  <head>
+    <meta charset="utf-8">
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    >
+
+    <title>ЕСТЬ ПОВОД! — открытка</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 24px 16px 40px;
+        background: #fff7ed;
+        color: #332b26;
+        font-family:
+          Arial,
+          sans-serif;
+        text-align: center;
+      }
+
+      main {
+        width: min(100%, 720px);
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 26px;
+      }
+
+      p {
+        margin: 0 0 20px;
+        line-height: 1.5;
+        color: #6b5d54;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 18px;
+        box-shadow:
+          0 10px 35px
+          rgba(0, 0, 0, 0.12);
+      }
+
+      .hint {
+        margin-top: 20px;
+        padding: 14px 16px;
+        background: #ffffff;
+        border-radius: 14px;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1>☀️ Открытка готова</h1>
+
+      <p>
+        Нажмите и удерживайте изображение,
+        чтобы сохранить его на телефон.
+      </p>
+
+      <img
+        src="${imageUrl}"
+        alt="Открытка ЕСТЬ ПОВОД!"
+      >
+
+      <div class="hint">
+        Если меню не появилось сразу,
+        нажмите и удерживайте открытку ещё раз.
+      </div>
+    </main>
+  </body>
+  </html>
+        `)
+
+        return
+      }
+
+      if (
+        request.method === 'GET' &&
+        request.url.startsWith(
+          '/api/view-image/',
+        )
+      ) {
+        const fileId =
+          request.url
+            .split('/api/view-image/')[1]
+            ?.split('?')[0]
+
+        const file =
+          storedFiles.get(fileId)
+
+        if (
+          !file ||
+          file.expiresAt < Date.now()
+        ) {
+          response.writeHead(404, {
+            'Content-Type':
+              'text/plain; charset=utf-8',
+          })
+
+          response.end(
+            'Изображение не найдено.',
+          )
+
+          return
+        }
+
+        response.writeHead(200, {
+          'Content-Type':
+            file.contentType ||
+            'image/png',
+
+          'Content-Length':
+            file.buffer.length,
+
+          /*
+          * ВАЖНО:
+          * inline, а не attachment.
+          *
+          * Браузер должен показать PNG
+          * как обычную картинку.
+          */
+          'Content-Disposition':
+            'inline',
+
+          'Cache-Control':
+            'no-store',
+
+          'Access-Control-Allow-Origin':
+            '*',
+        })
+
+        response.end(file.buffer)
+
+        return
+      }      
+
       if (request.method === 'POST' && request.url === '/api/telegram/share') {
         try {
           const body = await readJsonBody(request)
