@@ -11,7 +11,7 @@ const MAX_BOT_TOKEN = process.env.MAX_BOT_TOKEN
 
 const PUBLIC_BASE_URL =
   process.env.PUBLIC_BASE_URL ||
-  'https://est-povod-max-api.layero.app'
+  'https://est-povod-max-api-main.layero.app'
 
 const storedFiles = new Map()
 
