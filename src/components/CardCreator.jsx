@@ -6,7 +6,7 @@ const API_URL =
   'https://est-povod-max-api.layero.app'
 
 const IMAGE_PROXY_URL =
-  'https://est-povod-images.anastasiiapetrovam1.workers.dev/'
+  `${API_URL}/api/image-proxy`
 
 const STYLES = [
   {
@@ -485,7 +485,7 @@ function CardCreator({
   const shareCaption = [
     '☀️ Открытка создана в приложении «ЕСТЬ ПОВОД!»',
     `🔎 Подробнее о празднике: ${infoUrl || 'Ссылка не указана'}`,
-    '🌐 Сайт «ЕСТЬ ПОВОД!»: https://est-povod-nnm.pages.dev/',
+    '🌐 Сайт «ЕСТЬ ПОВОД!»: https://est-povod-main.layero.app/',
   ].join('\n\n')
 
   /*
