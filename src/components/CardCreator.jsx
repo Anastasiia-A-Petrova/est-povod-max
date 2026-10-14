@@ -2,6 +2,9 @@ import { useMemo, useState } from 'react'
 import { toPng, toBlob } from 'html-to-image'
 import './CardCreator.css'
 
+const API_URL =
+  'https://est-povod-max-api.layero.app'
+
 const IMAGE_PROXY_URL =
   'https://est-povod-images.anastasiiapetrovam1.workers.dev/'
 
@@ -723,7 +726,7 @@ function CardCreator({
 
       const response =
         await fetch(
-          'https://est-povod-api.onrender.com/api/telegram/download',
+          `${API_URL}/api/telegram/download`,
           {
             method: 'POST',
 
@@ -945,7 +948,7 @@ function CardCreator({
 
         const response =
           await fetch(
-            'https://est-povod-api.onrender.com/api/telegram/share',
+            `${API_URL}/api/telegram/share`,
             {
               method: 'POST',
               headers: {
@@ -1161,7 +1164,7 @@ function CardCreator({
 
     try {
       const response = await fetch(
-        'https://est-povod-api.onrender.com/api/ready-cards',
+        `${API_URL}/api/ready-cards`,
         {
           method: 'POST',
           headers: {
