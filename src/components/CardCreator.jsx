@@ -718,77 +718,79 @@ function CardCreator({
       )
 
       /*
-      * MAX Mini App.
-      *
-      * MAX Bridge не умеет скачивать Blob
-      * напрямую — ему нужен HTTPS URL.
-      *
-      * Поэтому пока используем наш backend,
-      * который отдаёт PNG как attachment.
-      */
-      const imageBase64 =
-        await new Promise(
-          (resolve, reject) => {
-            const reader =
-              new FileReader()
-
-            reader.onload = () => {
-              resolve(reader.result)
-            }
-
-            reader.onerror = () => {
-              reject(
-                new Error(
-                  'Не удалось подготовить открытку',
-                ),
-              )
-            }
-
-            reader.readAsDataURL(blob)
-          },
-        )
-
-      const response = await fetch(
-        `${API_URL}/api/download`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type':
-              'application/json',
-          },
-          body: JSON.stringify({
-            imageBase64,
-            filename: fileName,
-          }),
-        },
-      )
-
-      const data =
-        await response.json()
-
-      if (
-        !response.ok ||
-        !data.ok ||
-        !data.downloadUrl
-      ) {
-        throw new Error(
-          data.error ||
-            'Не удалось подготовить скачивание',
-        )
-      }
-
-      /*
-      * Если приложение запущено внутри MAX,
-      * используем официальный MAX Bridge.
+      * Определяем, запущено ли приложение
+      * внутри MAX.
       */
       const maxWebApp =
         window.WebApp
 
-      if (
+      const isMaxApp =
         maxWebApp &&
         typeof maxWebApp.downloadFile ===
-          'function'
-      ) {
+          'function' &&
+        maxWebApp.initData
+
+      /*
+      * =====================================================
+      * MAX
+      * =====================================================
+      *
+      * MAX Bridge не умеет принимать Blob напрямую.
+      * Поэтому отправляем изображение на backend,
+      * получаем HTTPS-ссылку и передаём её MAX Bridge.
+      */
+      if (isMaxApp) {
+        const imageBase64 =
+          await new Promise(
+            (resolve, reject) => {
+              const reader =
+                new FileReader()
+
+              reader.onload = () => {
+                resolve(reader.result)
+              }
+
+              reader.onerror = () => {
+                reject(
+                  new Error(
+                    'Не удалось подготовить открытку',
+                  ),
+                )
+              }
+
+              reader.readAsDataURL(blob)
+            },
+          )
+
+        const response = await fetch(
+          `${API_URL}/api/download`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type':
+                'application/json',
+            },
+            body: JSON.stringify({
+              imageBase64,
+              filename: fileName,
+            }),
+          },
+        )
+
+        const data =
+          await response.json()
+
+        if (
+          !response.ok ||
+          !data.ok ||
+          !data.downloadUrl
+        ) {
+          throw new Error(
+            data.error ||
+              'Не удалось подготовить скачивание',
+          )
+        }
+
         try {
           await maxWebApp.downloadFile(
             data.downloadUrl,
@@ -808,18 +810,42 @@ function CardCreator({
         }
 
         return
-
       }
 
       /*
-      * Обычный браузерный fallback.
+      * =====================================================
+      * ОБЫЧНЫЙ БРАУЗЕР
+      * =====================================================
+      *
+      * Здесь backend вообще не нужен.
+      * У нас уже есть готовый Blob,
+      * поэтому сохраняем его напрямую.
       */
-      window.open(
-        data.downloadUrl,
-        '_blank',
-        'noopener,noreferrer',
-      )
+      const blobUrl =
+        URL.createObjectURL(blob)
+
+      try {
+        const link =
+          document.createElement('a')
+
+        link.href = blobUrl
+        link.download = fileName
+        link.style.display = 'none'
+
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+      } finally {
+        setTimeout(() => {
+          URL.revokeObjectURL(blobUrl)
+        }, 1000)
+      }
     } catch (error) {
+      console.error(
+        'Download error:',
+        error,
+      )
+
       alert(
         'Не получилось сохранить открытку.\n\n' +
           (error?.message ||
