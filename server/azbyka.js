@@ -7,6 +7,7 @@ const BASE_URL = 'https://azbyka.ru/days'
 const PORT = Number(process.env.PORT) || 3001
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN
+const MAX_BOT_TOKEN = process.env.MAX_BOT_TOKEN
 
 const PUBLIC_BASE_URL =
   process.env.PUBLIC_BASE_URL ||

@@ -7,6 +7,7 @@ import './App.css'
 import customOccasions from './data/occasions'
 import CardCreator from './components/CardCreator'
 import { getOrthodoxDate } from './api/orthodox'
+import PrivacyPolicy from './PrivacyPolicy'
 
 const NAGER_API =
   'https://date.nager.at/api/v3'
@@ -1208,6 +1209,13 @@ function getRelativeDateLabel(
  */
 
 function App() {
+  if (
+    window.location.pathname ===
+    '/privacy'
+  ) {
+    return <PrivacyPolicy />
+  }
+
   const todayString =
     getTodayString()
 
