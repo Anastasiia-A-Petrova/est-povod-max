@@ -12,7 +12,7 @@ const PUBLIC_BASE_URL =
   process.env.PUBLIC_BASE_URL ||
   'https://est-povod-max-api.layero.app'
 
-const telegramFiles = new Map()
+const storedFiles = new Map()
 
 function validateTelegramInitData(initData) {
   if (!TELEGRAM_BOT_TOKEN) {
@@ -81,9 +81,9 @@ function validateTelegramInitData(initData) {
 function cleanupTelegramFiles() {
   const now = Date.now()
 
-  for (const [id, file] of telegramFiles.entries()) {
+  for (const [id, file] of storedFiles.entries()) {
     if (file.expiresAt <= now) {
-      telegramFiles.delete(id)
+      storedFiles.delete(id)
     }
   }
 }
@@ -706,7 +706,7 @@ const server =
 
       if (
         request.method === 'POST' &&
-        request.url === '/api/telegram/download'
+        request.url === '/api/download'
       ) {
         try {
           const body = await readJsonBody(request)
@@ -764,7 +764,7 @@ const server =
           const fileId =
             crypto.randomUUID()
 
-          telegramFiles.set(fileId, {
+          storedFiles.set(fileId, {
             buffer: imageBuffer,
             contentType: 'image/png',
             filename,
@@ -778,7 +778,7 @@ const server =
             'https://est-povod-max-api.layero.app'
 
           const downloadUrl =
-            `${baseUrl}/api/telegram/download/${fileId}`
+            `${baseUrl}/api/download/${fileId}`
 
           response.writeHead(200, {
             'Content-Type':
@@ -824,16 +824,16 @@ const server =
       if (
         request.method === 'GET' &&
         request.url.startsWith(
-          '/api/telegram/download/',
+          '/api/download/',
         )
       ) {
         const fileId =
           request.url
-            .split('/api/telegram/download/')[1]
+            .split('/api/download/')[1]
             ?.split('?')[0]
 
         const file =
-          telegramFiles.get(fileId)
+          storedFiles.get(fileId)
 
         if (
           !file ||
@@ -913,7 +913,7 @@ const server =
 
           const fileId = crypto.randomUUID()
 
-          telegramFiles.set(fileId, {
+          storedFiles.set(fileId, {
             buffer: imageBuffer,
             contentType: 'image/jpeg',
             filename,
@@ -1007,7 +1007,7 @@ const server =
         try {
           const fileId = request.url.split('/').pop()
 
-          const file = telegramFiles.get(fileId)
+          const file = storedFiles.get(fileId)
 
           if (!file) {
             response.writeHead(404, {

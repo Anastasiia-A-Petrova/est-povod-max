@@ -712,6 +712,20 @@ function CardCreator({
         )
       }
 
+      const fileName = makeFileName(
+        occasion.title,
+        'png',
+      )
+
+      /*
+      * MAX Mini App.
+      *
+      * MAX Bridge не умеет скачивать Blob
+      * напрямую — ему нужен HTTPS URL.
+      *
+      * Поэтому пока используем наш backend,
+      * который отдаёт PNG как attachment.
+      */
       const imageBase64 =
         await new Promise(
           (resolve, reject) => {
@@ -719,9 +733,7 @@ function CardCreator({
               new FileReader()
 
             reader.onload = () => {
-              resolve(
-                reader.result,
-              )
+              resolve(reader.result)
             }
 
             reader.onerror = () => {
@@ -736,26 +748,20 @@ function CardCreator({
           },
         )
 
-      const response =
-        await fetch(
-          `${API_URL}/api/telegram/download`,
-          {
-            method: 'POST',
-
-            headers: {
-              'Content-Type':
-                'application/json',
-            },
-
-            body: JSON.stringify({
-              imageBase64,
-              filename: makeFileName(
-                occasion.title,
-                'png',
-              ),
-            }),
+      const response = await fetch(
+        `${API_URL}/api/download`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type':
+              'application/json',
           },
-        )
+          body: JSON.stringify({
+            imageBase64,
+            filename: fileName,
+          }),
+        },
+      )
 
       const data =
         await response.json()
@@ -772,21 +778,38 @@ function CardCreator({
       }
 
       /*
-      * Открываем настоящий URL файла.
-      * Backend отдаёт его как attachment,
-      * поэтому Android должен предложить
-      * скачать PNG.
+      * Если приложение запущено внутри MAX,
+      * используем официальный MAX Bridge.
       */
+      const maxWebApp =
+        window.WebApp
 
+      if (
+        maxWebApp &&
+        typeof maxWebApp.downloadFile ===
+          'function'
+      ) {
+        maxWebApp.downloadFile(
+          data.downloadUrl,
+          fileName,
+        )
+
+        return
+      }
+
+      /*
+      * Обычный браузерный fallback.
+      */
       window.open(
         data.downloadUrl,
         '_blank',
+        'noopener,noreferrer',
       )
-
     } catch (error) {
       alert(
         'Не получилось сохранить открытку.\n\n' +
-        (error?.message || String(error)),
+          (error?.message ||
+            String(error)),
       )
     } finally {
       restoreImages()
