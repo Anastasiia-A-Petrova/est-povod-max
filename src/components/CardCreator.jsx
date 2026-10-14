@@ -789,12 +789,26 @@ function CardCreator({
         typeof maxWebApp.downloadFile ===
           'function'
       ) {
-        maxWebApp.downloadFile(
-          data.downloadUrl,
-          fileName,
-        )
+        try {
+          await maxWebApp.downloadFile(
+            data.downloadUrl,
+            fileName,
+          )
+        } catch (error) {
+          console.error(
+            'MAX downloadFile error:',
+            error,
+          )
+
+          throw new Error(
+            error?.error?.code ||
+              error?.message ||
+              'MAX не смог скачать файл',
+          )
+        }
 
         return
+
       }
 
       /*
