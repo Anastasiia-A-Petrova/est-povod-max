@@ -945,29 +945,29 @@ if (
     const params =
       validateMaxInitData(initData)
 
-    const chatData = params.get('chat')
+    const userData = params.get('user')
 
-    if (!chatData) {
+    if (!userData) {
       throw new Error(
-        'В initData MAX нет данных чата',
+        'В initData MAX нет данных пользователя',
       )
     }
 
-    let chat
+    let user
 
     try {
-      chat = JSON.parse(chatData)
+      user = JSON.parse(userData)
     } catch {
       throw new Error(
-        'Не удалось прочитать данные чата MAX',
+        'Не удалось прочитать данные пользователя MAX',
       )
     }
 
-    const chatId = chat?.id
+    const userId = user?.id
 
-    if (!chatId) {
+    if (!userId) {
       throw new Error(
-        'В initData MAX нет chat.id',
+        'В initData MAX нет user.id',
       )
     }
 
@@ -999,9 +999,10 @@ if (
     }
 
     const messageResponse = await fetch(
-      `https://platform-api2.max.ru/messages?chat_id=${encodeURIComponent(
-        chatId,
+      `https://platform-api2.max.ru/messages?user_id=${encodeURIComponent(
+        userId,
       )}`,
+
       {
         method: 'POST',
         headers: {
