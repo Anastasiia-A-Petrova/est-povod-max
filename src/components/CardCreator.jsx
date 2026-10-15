@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { toPng, toBlob } from 'html-to-image'
+import { toBlob } from 'html-to-image'
 import './CardCreator.css'
 
 const API_URL =
@@ -734,7 +734,7 @@ function CardCreator({
         Boolean(
           maxWebApp &&
           maxWebApp.initData &&
-          typeof maxWebApp.openLink === 'function',
+          typeof maxWebApp.downloadFile === 'function',
         )
 
       if (isMaxApp) {
@@ -789,15 +789,9 @@ function CardCreator({
           )
         }
 
-        /*
-        * Открываем страницу с открыткой.
-        *
-        * На телефоне MAX пользователь сможет
-        * нажать и удерживать изображение и
-        * сохранить его в галерею.
-        */
-        maxWebApp.openLink(
-          data.viewUrl,
+        await maxWebApp.downloadFile(
+          data.downloadUrl,
+          fileName,
         )
 
         return

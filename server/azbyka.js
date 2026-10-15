@@ -6,7 +6,6 @@ import { searchReadyCards } from './ready-cards/index.js'
 const BASE_URL = 'https://azbyka.ru/days'
 const PORT = Number(process.env.PORT) || 3001
 
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN
 const MAX_BOT_TOKEN = process.env.MAX_BOT_TOKEN
 
 const PUBLIC_BASE_URL =
@@ -117,71 +116,7 @@ function validateMaxInitData(initData) {
   return params
 }
 
-function validateTelegramInitData(initData) {
-  if (!TELEGRAM_BOT_TOKEN) {
-    throw new Error('TELEGRAM_BOT_TOKEN не настроен')
-  }
-
-  if (!initData || typeof initData !== 'string') {
-    throw new Error('Telegram initData отсутствует')
-  }
-
-  const params = new URLSearchParams(initData)
-  const receivedHash = params.get('hash')
-
-  if (!receivedHash) {
-    throw new Error('Telegram hash отсутствует')
-  }
-
-  params.delete('hash')
-
-  const dataCheckString = [...params.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([key, value]) => `${key}=${value}`)
-    .join('\n')
-
-  const secretKey = crypto
-    .createHmac('sha256', 'WebAppData')
-    .update(TELEGRAM_BOT_TOKEN)
-    .digest()
-
-  const calculatedHash = crypto
-    .createHmac('sha256', secretKey)
-    .update(dataCheckString)
-    .digest('hex')
-
-  const receivedBuffer = Buffer.from(receivedHash, 'hex')
-  const calculatedBuffer = Buffer.from(calculatedHash, 'hex')
-
-  if (
-    receivedBuffer.length !== calculatedBuffer.length ||
-    !crypto.timingSafeEqual(receivedBuffer, calculatedBuffer)
-  ) {
-    throw new Error('Telegram initData недействителен')
-  }
-
-  const userRaw = params.get('user')
-
-  if (!userRaw) {
-    throw new Error('Данные пользователя Telegram отсутствуют')
-  }
-
-  let user
-
-  try {
-    user = JSON.parse(userRaw)
-  } catch {
-    throw new Error('Не удалось прочитать данные пользователя Telegram')
-  }
-
-  if (!user?.id) {
-    throw new Error('ID пользователя Telegram отсутствует')
-  }
-
-  return user
-}
-
-function cleanupTelegramFiles() {
+function cleanupStoredFiles() {
   const now = Date.now()
 
   for (const [id, file] of storedFiles.entries()) {
@@ -191,7 +126,7 @@ function cleanupTelegramFiles() {
   }
 }
 
-setInterval(cleanupTelegramFiles, 5 * 60 * 1000)
+setInterval(cleanupStoredFiles, 5 * 60 * 1000)
 
 let token = null
 let tokenExpiresAt = 0
@@ -990,6 +925,7 @@ if (
       )
 
     const mediafileToken =
+      uploadResult?.token ||
       uploadResult?.photos?.['0']?.token
 
     if (!mediafileToken) {
@@ -997,6 +933,10 @@ if (
         'MAX не вернул mediafile_token',
       )
     }
+
+    await new Promise((resolve) =>
+      setTimeout(resolve, 1500),
+    )
 
     const messageResponse = await fetch(
       `https://platform-api2.max.ru/messages?user_id=${encodeURIComponent(
@@ -1478,189 +1418,7 @@ if (
 
         return
       }      
-
-      if (request.method === 'POST' && request.url === '/api/telegram/share') {
-        try {
-          const body = await readJsonBody(request)
-
-          const {
-            initData,
-            imageBase64,
-            caption = '',
-            filename = 'otkrytka.jpg',
-          } = body
-
-          // Проверяем, что запрос действительно пришёл
-          // от открывшего Mini App пользователя Telegram.
-          const telegramUser = validateTelegramInitData(initData)
-
-          if (!imageBase64 || typeof imageBase64 !== 'string') {
-            throw new Error('Изображение открытки отсутствует')
-          }
-
-          // Убираем возможный префикс:
-          // data:image/jpeg;base64,...
-          const base64 = imageBase64.replace(
-            /^data:image\/jpeg;base64,/,
-            ''
-          )
-
-          const imageBuffer = Buffer.from(base64, 'base64')
-
-          if (!imageBuffer.length) {
-            throw new Error('Не удалось прочитать изображение открытки')
-          }
-
-          // Защита от слишком больших файлов.
-          if (imageBuffer.length > 10 * 1024 * 1024) {
-            throw new Error('Изображение открытки слишком большое')
-          }
-
-          const fileId = crypto.randomUUID()
-
-          storedFiles.set(fileId, {
-            buffer: imageBuffer,
-            contentType: 'image/jpeg',
-            filename,
-            expiresAt: Date.now() + 30 * 60 * 1000,
-          })
-
-          const imageUrl =
-            `${PUBLIC_BASE_URL}/api/telegram/file/${fileId}`           
-
-          const telegramResponse = await fetch(
-            `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/savePreparedInlineMessage`,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                user_id: telegramUser.id,
-
-                result: {
-                  type: 'photo',
-                  id: fileId,
-                  photo_url: imageUrl,
-                  thumbnail_url: imageUrl,
-                  caption: caption || 'ЕСТЬ ПОВОД!',
-                  parse_mode: 'HTML',
-                },
-
-                allow_user_chats: true,
-                allow_group_chats: true,
-                allow_channel_chats: true,
-                allow_bot_chats: false,
-              }),
-            }
-          )
-
-          const telegramData = await telegramResponse.json()
-
-          if (!telegramResponse.ok || !telegramData.ok) {
-            console.error(
-              'Telegram savePreparedInlineMessage error:',
-              telegramData
-            )
-
-            throw new Error(
-              telegramData.description ||
-              'Telegram не смог подготовить открытку'
-            )
-          }
-
-          response.writeHead(200, {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Access-Control-Allow-Origin': '*',
-          })
-
-          response.end(
-            JSON.stringify({
-              ok: true,
-              msgId: telegramData.result.id,
-              fileUrl: imageUrl,
-            })
-          )
-
-          return
-        } catch (error) {
-          console.error(
-            'Telegram share preparation error:',
-            error
-          )
-
-          response.writeHead(400, {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Access-Control-Allow-Origin': '*',
-          })
-
-          response.end(
-            JSON.stringify({
-              ok: false,
-              error: error.message || 'Не удалось подготовить открытку',
-            })
-          )
-
-          return
-        }
-      }
-        
-      if (
-        request.method === 'GET' &&
-        request.url.startsWith('/api/telegram/file/')
-      ) {
-        try {
-          const fileId = request.url.split('/').pop()
-
-          const file = storedFiles.get(fileId)
-
-          if (!file) {
-            response.writeHead(404, {
-              'Content-Type': 'application/json; charset=utf-8',
-              'Access-Control-Allow-Origin': '*',
-            })
-
-            response.end(
-              JSON.stringify({
-                ok: false,
-                error: 'Файл открытки не найден или срок его хранения истёк',
-              })
-            )
-
-            return
-          }
-
-          response.writeHead(200, {
-            'Content-Type': file.contentType || 'image/jpeg',
-            'Content-Length': file.buffer.length,
-            'Cache-Control': 'no-store',
-            'Access-Control-Allow-Origin': '*',
-          })
-
-          response.end(file.buffer)
-          return
-        } catch (error) {
-          console.error(
-            'Telegram file error:',
-            error
-          )
-
-          response.writeHead(500, {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Access-Control-Allow-Origin': '*',
-          })
-
-          response.end(
-            JSON.stringify({
-              ok: false,
-              error: 'Не удалось отдать файл открытки',
-            })
-          )
-
-          return
-        }
-      }
-
+      
 
       // ------------------------------------------------------
       // IMAGE PROXY
