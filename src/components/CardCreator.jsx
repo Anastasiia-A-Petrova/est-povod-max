@@ -900,7 +900,9 @@ function CardCreator({
 
       const isMaxApp = Boolean(
         maxWebApp &&
-        maxWebApp.initData &&
+        ['android', 'ios', 'desktop'].includes(
+          maxWebApp.platform,
+        ) &&
         typeof maxWebApp.shareMaxContent === 'function',
       )
 
