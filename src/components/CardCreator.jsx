@@ -719,92 +719,58 @@ function CardCreator({
 
       /*
       * =====================================================
-      * MAX MINI APP
-      * =====================================================
-      *
-      * Не используем downloadFile.
-      *
-      * Отправляем готовую открытку на backend,
-      * получаем обычную HTTPS-ссылку и открываем
-      * её во внешнем браузере телефона.
-      */
-      const maxWebApp = window.WebApp
-
-      const isMaxApp =
-        Boolean(
-          maxWebApp &&
-          maxWebApp.initData &&
-          typeof maxWebApp.downloadFile === 'function',
-        )
-
-      if (isMaxApp) {
-        const imageBase64 =
-          await new Promise(
-            (resolve, reject) => {
-              const reader =
-                new FileReader()
-
-              reader.onload = () => {
-                resolve(reader.result)
-              }
-
-              reader.onerror = () => {
-                reject(
-                  new Error(
-                    'Не удалось подготовить открытку',
-                  ),
-                )
-              }
-
-              reader.readAsDataURL(blob)
-            },
-          )
-
-        const response = await fetch(
-          `${API_URL}/api/download`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type':
-                'application/json',
-            },
-            body: JSON.stringify({
-              imageBase64,
-              filename: fileName,
-            }),
-          },
-        )
-
-        const data = await response.json()
-
-        if (
-          !response.ok ||
-          !data.ok ||
-          !data.downloadUrl ||
-          !data.viewUrl
-        ) {
-          throw new Error(
-            data.error ||
-              'Не удалось подготовить скачивание',
-          )
-        }
-
-        await maxWebApp.downloadFile(
-          data.downloadUrl,
-          fileName,
-        )
-
-        return
-      }
-
-      /*
-      * =====================================================
       * ОБЫЧНЫЙ БРАУЗЕР
       * =====================================================
       *
       * Backend здесь не нужен.
       * Сохраняем уже созданный Blob напрямую.
       */
+
+      const file = new File(
+        [blob],
+        fileName,
+        {
+          type: 'image/png',
+        },
+      )
+
+      const isMaxMobile =
+        Boolean(
+          window.WebApp &&
+          ['android', 'ios'].includes(
+            window.WebApp.platform,
+          ),
+        )
+
+      if (
+        isMaxMobile &&
+        typeof navigator.share === 'function'
+      ) {
+        let canShareFile = false
+
+        if (
+          typeof navigator.canShare === 'function'
+        ) {
+          try {
+            canShareFile =
+              navigator.canShare({
+                files: [file],
+              })
+          } catch {
+            canShareFile = false
+          }
+        }
+
+        if (canShareFile) {
+          await navigator.share({
+            files: [file],
+            title: fileName,
+          })
+
+          return
+        }
+      }
+
       const blobUrl =
         URL.createObjectURL(blob)
 
