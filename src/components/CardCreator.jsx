@@ -888,194 +888,81 @@ function CardCreator({
         )
       }
 
-      /*
-      * Telegram InlineQueryResultPhoto требует JPEG.
-      *
-      * Поэтому превращаем PNG в JPEG прямо
-      * в браузере. На самой открытке ничего
-      * не меняем.
-      */
-      const pngUrl =
-        URL.createObjectURL(pngBlob)
 
-      const image = new Image()
-
-      await new Promise(
-        (resolve, reject) => {
-          image.onload = resolve
-          image.onerror = () =>
-            reject(
-              new Error(
-                'Не удалось подготовить JPEG',
-              ),
-            )
-
-          image.src = pngUrl
-        },
-      )
-
-      const canvas =
-        document.createElement('canvas')
-
-      canvas.width = image.naturalWidth
-      canvas.height = image.naturalHeight
-
-      const context =
-        canvas.getContext('2d')
-
-      if (!context) {
-        URL.revokeObjectURL(pngUrl)
-
-        throw new Error(
-          'Не удалось создать Canvas',
-        )
-      }
-
-      context.fillStyle = '#ffffff'
-
-      context.fillRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height,
-      )
-
-      context.drawImage(
-        image,
-        0,
-        0,
-        canvas.width,
-        canvas.height,
-      )
-
-      const jpegBlob =
-        await new Promise(
-          (resolve) =>
-            canvas.toBlob(
-              resolve,
-              'image/jpeg',
-              0.92,
-            ),
-        )
-
-      URL.revokeObjectURL(pngUrl)
-
-      if (!jpegBlob) {
-        throw new Error(
-          'Не удалось создать JPEG',
-        )
-      }
-
-      /*
-      * ---------------------------------------------------------
-      * TELEGRAM MINI APP
-      * ---------------------------------------------------------
-      */
-
-      const telegram =
-        window.Telegram?.WebApp
-
-      if (
-        telegram &&
-        telegram.initData &&
-        typeof telegram.shareMessage ===
-          'function'
-      ) {
-        /*
-        * Превращаем JPEG в base64,
-        * чтобы передать его на Render.
-        */
-        const imageBase64 =
-          await new Promise(
-            (resolve, reject) => {
-              const reader =
-                new FileReader()
-
-              reader.onload = () => {
-                resolve(
-                  reader.result,
-                )
-              }
-
-              reader.onerror = () => {
-                reject(
-                  new Error(
-                    'Не удалось подготовить изображение для Telegram',
-                  ),
-                )
-              }
-
-              reader.readAsDataURL(
-                jpegBlob,
-              )
-            },
-          )
-
-        const response =
-          await fetch(
-            `${API_URL}/api/telegram/share`,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type':
-                  'application/json',
-              },
-              body: JSON.stringify({
-                initData:
-                  telegram.initData,
-
-                imageBase64,
-
-                caption:
-                  `${greeting}\n\n${shareCaption}`,
-
-                filename: makeFileName(
-                  occasion.title,
-                  'jpg',
-                ),
-              }),
-            },
-          )
-
-        const data =
-          await response.json()
-
-        if (
-          !response.ok ||
-          !data.ok ||
-          !data.msgId
-        ) {
-          throw new Error(
-            data.error ||
-              'Telegram не смог подготовить открытку',
-          )
-        }
-
-        /*
-        * Telegram открывает своё нативное
-        * окно выбора чата.
-        */
-
-        try {
-          telegram.shareMessage(data.msgId)
-        } catch (shareError) {
-          alert(
-            `Ошибка Telegram shareMessage:\n\n` +
-            `${shareError?.message || shareError}`,
-          )
-        }
-
-        return
-      }
 
       /*
       * ---------------------------------------------------------
       * ОБЫЧНЫЙ БРАУЗЕР
       * ---------------------------------------------------------
-      *
-      * Telegram здесь не используется.
-      * Сохраняем прежнее поведение сайта.
       */
+
+      const maxWebApp = window.WebApp
+
+      const isMaxApp = Boolean(
+        maxWebApp &&
+        maxWebApp.initData &&
+        typeof maxWebApp.shareMaxContent === 'function',
+      )
+
+      if (isMaxApp) {
+        const reader = new FileReader()
+
+        const imageBase64 = await new Promise(
+          (resolve, reject) => {
+            reader.onload = () =>
+              resolve(reader.result)
+
+            reader.onerror = () =>
+              reject(
+                new Error(
+                  'Не удалось подготовить изображение для MAX',
+                ),
+              )
+
+            reader.readAsDataURL(pngBlob)
+          },
+        )
+
+        const response = await fetch(
+          `${API_URL}/api/max/share`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type':
+                'application/json',
+            },
+            body: JSON.stringify({
+              imageBase64,
+              initData: maxWebApp.initData,
+              filename: makeFileName(
+                occasion.title,
+                'png',
+              ),
+              caption: `${greeting}\n\n${shareCaption}`,
+            }),
+          },
+        )
+
+        const data = await response.json()
+
+        if (
+          !response.ok ||
+          !data.ok ||
+          !data.mid
+        ) {
+          throw new Error(
+            data.error ||
+              'Не удалось отправить открытку в MAX',
+          )
+        }
+
+        await maxWebApp.shareMaxContent({
+          mid: data.mid,
+          chatType: 'DIALOG',
+        })
+
+        return
+      }
 
       const file = new File(
         [pngBlob],

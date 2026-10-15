@@ -15,6 +15,108 @@ const PUBLIC_BASE_URL =
 
 const storedFiles = new Map()
 
+function validateMaxInitData(initData) {
+  if (!MAX_BOT_TOKEN) {
+    throw new Error(
+      'MAX_BOT_TOKEN не настроен',
+    )
+  }
+
+  if (
+    !initData ||
+    typeof initData !== 'string'
+  ) {
+    throw new Error(
+      'MAX initData отсутствует',
+    )
+  }
+
+  const params =
+    new URLSearchParams(initData)
+
+  const entries = [
+    ...params.entries(),
+  ]
+
+  const counts = new Map()
+
+  for (const [key] of entries) {
+    counts.set(
+      key,
+      (counts.get(key) || 0) + 1,
+    )
+  }
+
+  for (const [key, count] of counts) {
+    if (count !== 1) {
+      throw new Error(
+        `MAX initData содержит повторяющийся параметр: ${key}`,
+      )
+    }
+  }
+
+  const hash = params.get('hash')
+
+  if (!hash) {
+    throw new Error(
+      'MAX hash отсутствует',
+    )
+  }
+
+  const dataCheckString = entries
+    .filter(
+      ([key]) => key !== 'hash',
+    )
+    .sort(([a], [b]) =>
+      a.localeCompare(b),
+    )
+    .map(
+      ([key, value]) =>
+        `${key}=${value}`,
+    )
+    .join('\n')
+
+  const secretKey = crypto
+    .createHmac(
+      'sha256',
+      'WebAppData',
+    )
+    .update(MAX_BOT_TOKEN)
+    .digest()
+
+  const calculatedHash = crypto
+    .createHmac(
+      'sha256',
+      secretKey,
+    )
+    .update(dataCheckString)
+    .digest('hex')
+
+  const receivedBuffer =
+    Buffer.from(hash, 'hex')
+
+  const calculatedBuffer =
+    Buffer.from(
+      calculatedHash,
+      'hex',
+    )
+
+  if (
+    receivedBuffer.length !==
+      calculatedBuffer.length ||
+    !crypto.timingSafeEqual(
+      receivedBuffer,
+      calculatedBuffer,
+    )
+  ) {
+    throw new Error(
+      'MAX initData недействителен',
+    )
+  }
+
+  return params
+}
+
 function validateTelegramInitData(initData) {
   if (!TELEGRAM_BOT_TOKEN) {
     throw new Error('TELEGRAM_BOT_TOKEN не настроен')
@@ -653,6 +755,118 @@ async function readJsonBody(request) {
   }
 }
 
+
+// ============================================================
+// MAX MEDIA UPLOAD
+// ============================================================
+
+async function createMaxImageUpload() {
+  if (!MAX_BOT_TOKEN) {
+    throw new Error(
+      'MAX_BOT_TOKEN не настроен',
+    )
+  }
+
+  const response = await fetch(
+    'https://platform-api2.max.ru/uploads?type=image',
+    {
+      method: 'POST',
+
+      headers: {
+        Authorization: MAX_BOT_TOKEN,
+        Accept: 'application/json',
+      },
+    },
+  )
+
+  const text = await response.text()
+
+  let data
+
+  try {
+    data = JSON.parse(text)
+  } catch {
+    throw new Error(
+      `MAX вернул некорректный ответ: ${text}`,
+    )
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `MAX API ${response.status}: ${
+        data?.message ||
+        data?.error ||
+        text
+      }`,
+    )
+  }
+
+  if (!data?.url) {
+    throw new Error(
+      'MAX не вернул URL для загрузки изображения',
+    )
+  }
+
+  return data
+}
+
+async function uploadImageToMax(
+  uploadUrl,
+  imageBuffer,
+  filename,
+) {
+  if (!MAX_BOT_TOKEN) {
+    throw new Error(
+      'MAX_BOT_TOKEN не настроен',
+    )
+  }
+
+  const form = new FormData()
+
+  form.append(
+    'data',
+    new Blob([imageBuffer], {
+      type: 'image/png',
+    }),
+    filename,
+  )
+
+  const response = await fetch(
+    uploadUrl,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: MAX_BOT_TOKEN,
+      },
+      body: form,
+    },
+  )
+
+  const text = await response.text()
+
+  let data
+
+  try {
+    data = JSON.parse(text)
+  } catch {
+    throw new Error(
+      `MAX upload вернул некорректный ответ: ${text}`,
+    )
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `MAX upload ${response.status}: ${
+        data?.message ||
+        data?.error ||
+        text
+      }`,
+    )
+  }
+
+  return data
+}
+
 // ============================================================
 // HTTP SERVER
 // ============================================================
@@ -698,6 +912,176 @@ const server =
       }
 
 
+// ------------------------------------------------------
+// MAX SHARE
+// ------------------------------------------------------
+
+if (
+  request.method === 'POST' &&
+  request.url === '/api/max/share'
+) {
+  try {
+    const body = await readJsonBody(request)
+
+    const {
+      imageBase64,
+      filename = 'otkrytka.png',
+      initData,
+      caption = '',
+    } = body
+
+    if (!imageBase64) {
+      throw new Error(
+        'Не передано изображение',
+      )
+    }
+
+    if (!initData) {
+      throw new Error(
+        'Не передан initData MAX',
+      )
+    }
+
+    const params =
+      validateMaxInitData(initData)
+
+    const chatData = params.get('chat')
+
+    if (!chatData) {
+      throw new Error(
+        'В initData MAX нет данных чата',
+      )
+    }
+
+    let chat
+
+    try {
+      chat = JSON.parse(chatData)
+    } catch {
+      throw new Error(
+        'Не удалось прочитать данные чата MAX',
+      )
+    }
+
+    const chatId = chat?.id
+
+    if (!chatId) {
+      throw new Error(
+        'В initData MAX нет chat.id',
+      )
+    }
+
+    const imageBuffer = Buffer.from(
+      imageBase64.replace(
+        /^data:image\/png;base64,/,
+        '',
+      ),
+      'base64',
+    )
+
+    const uploadData =
+      await createMaxImageUpload()
+
+    const uploadResult =
+      await uploadImageToMax(
+        uploadData.url,
+        imageBuffer,
+        filename,
+      )
+
+    const mediafileToken =
+      uploadResult?.photos?.['0']?.token
+
+    if (!mediafileToken) {
+      throw new Error(
+        'MAX не вернул mediafile_token',
+      )
+    }
+
+    const messageResponse = await fetch(
+      `https://platform-api2.max.ru/messages?chat_id=${encodeURIComponent(
+        chatId,
+      )}`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: MAX_BOT_TOKEN,
+          'Content-Type':
+            'application/json',
+        },
+        body: JSON.stringify({
+          text: caption,
+          attachments: [
+            {
+              type: 'image',
+              payload: {
+                token: mediafileToken,
+              },
+            },
+          ],
+        }),
+      },
+    )
+
+    const messageText =
+      await messageResponse.text()
+
+    if (!messageResponse.ok) {
+      throw new Error(
+        `MAX messages ${messageResponse.status}: ${messageText}`,
+      )
+    }
+
+    let messageResult
+
+    try {
+      messageResult =
+        JSON.parse(messageText)
+    } catch {
+      messageResult = {
+        raw: messageText,
+      }
+    }
+
+    response.writeHead(200, {
+      'Content-Type':
+        'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin':
+        '*',
+    })
+
+    response.end(
+      JSON.stringify({
+        ok: true,
+        mid: messageResult?.mid,
+        messageResult,
+      }),
+    )
+  } catch (error) {
+    console.error(
+      'MAX share error:',
+      error,
+    )
+
+    response.writeHead(500, {
+      'Content-Type':
+        'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin':
+        '*',
+    })
+
+    response.end(
+      JSON.stringify({
+        ok: false,
+        error:
+          error?.message ||
+          'MAX share failed',
+      }),
+    )
+  }
+
+  return
+}
 
       const url =
         new URL(
