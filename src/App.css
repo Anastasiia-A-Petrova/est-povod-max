@@ -2660,3 +2660,76 @@ a {
   opacity: 1;
   text-decoration: underline;
 }
+
+.good-day-cards {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.good-day-cards-button {
+  border: 0;
+  border-radius: 14px;
+  padding: 10px 16px;
+  background: #f9d897;
+  color: #5c3b00;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.good-day-cards-button:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.12);
+}
+
+.good-day-cards-button:active {
+  transform: translateY(0);
+}
+
+.good-day-cards-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 30;
+
+  display: grid;
+  gap: 6px;
+
+  min-width: 220px;
+  padding: 8px;
+
+  background: #ffffff;
+  border: 1px solid #f0dfc5;
+  border-radius: 14px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.14);
+}
+
+.good-day-cards-menu button {
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 13px;
+
+  background: #fff7ed;
+  color: #4a3524;
+
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.good-day-cards-menu button:hover {
+  background: #ffedd5;
+  transform: translateX(2px);
+}

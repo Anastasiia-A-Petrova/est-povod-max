@@ -8,6 +8,7 @@ import customOccasions from './data/occasions'
 import CardCreator from './components/CardCreator'
 import { getOrthodoxDate } from './api/orthodox'
 import PrivacyPolicy from './PrivacyPolicy'
+import GoodDayCards from './components/GoodDayCards'
 
 const NAGER_API =
   'https://date.nager.at/api/v3'
@@ -2325,6 +2326,16 @@ function App() {
                 </button>
               ),
             )}
+
+            <GoodDayCards
+              onSelect={(title) => {
+                setCardCreatorOccasion({
+                  title,
+                  calendar: 'personal',
+                  congratulatable: true,
+                })
+              }}
+            />
           </div>
 
           {/* =========================

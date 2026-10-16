@@ -251,7 +251,7 @@ function extractResults(html) {
       source: SOURCE,
     })
 
-    if (results.length >= 30) {
+    if (results.length >= 100) {
       break
     }
   }
@@ -274,7 +274,18 @@ export async function searchYandexImages(
     }
   }
 
-  const query = `${cleanTitle} открытка`
+  const isGoodDayPhrase = [
+    'доброе утро',
+    'добрый день',
+    'добрый вечер',
+    'спокойной ночи',
+  ].includes(
+    cleanTitle.toLowerCase(),
+  )
+
+  const query = isGoodDayPhrase
+    ? `"${cleanTitle}" открытка`
+    : `${cleanTitle} открытка`
 
   const url =
     `https://yandex.ru/images/search?text=${encodeURIComponent(query)}`
