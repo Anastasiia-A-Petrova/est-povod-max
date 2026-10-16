@@ -8,9 +8,6 @@ const PORT = Number(process.env.PORT) || 3001
 
 const MAX_BOT_TOKEN = process.env.MAX_BOT_TOKEN
 
-const MAX_WEBHOOK_SECRET =
-  process.env.MAX_WEBHOOK_SECRET || ''
-
 const PUBLIC_BASE_URL =
   process.env.PUBLIC_BASE_URL ||
   'https://est-povod-max-api.layero.app'
@@ -815,109 +812,6 @@ const server =
       request,
       response,
     ) => {
-
-      // ------------------------------------------------------
-      // MAX WEBHOOK
-      // ------------------------------------------------------
-
-      if (
-        request.method === 'POST' &&
-        url.pathname === '/api/max/webhook'
-      ) {
-        try {
-          if (MAX_WEBHOOK_SECRET) {
-            const receivedSecret =
-              request.headers[
-                'x-max-bot-api-secret'
-              ]
-
-            if (
-              receivedSecret !==
-              MAX_WEBHOOK_SECRET
-            ) {
-              response.writeHead(401, {
-                'Content-Type':
-                  'application/json; charset=utf-8',
-              })
-
-              response.end(
-                JSON.stringify({
-                  error:
-                    'Неверный Webhook secret',
-                }),
-              )
-
-              return
-            }
-          }
-
-          let body = ''
-
-          for await (const chunk of request) {
-            body += chunk
-          }
-
-          let update
-
-          try {
-            update = JSON.parse(body)
-          } catch {
-            response.writeHead(400, {
-              'Content-Type':
-                'application/json; charset=utf-8',
-            })
-
-            response.end(
-              JSON.stringify({
-                error:
-                  'Некорректный JSON',
-              }),
-            )
-
-            return
-          }
-
-          console.log(
-            '[MAX Webhook] Получено событие:',
-            JSON.stringify(
-              update,
-              null,
-              2,
-            ),
-          )
-
-          response.writeHead(200, {
-            'Content-Type':
-              'application/json; charset=utf-8',
-          })
-
-          response.end(
-            JSON.stringify({
-              ok: true,
-            }),
-          )
-
-          return
-        } catch (error) {
-          console.error(
-            '[MAX Webhook] Ошибка:',
-            error,
-          )
-
-          response.writeHead(200, {
-            'Content-Type':
-              'application/json; charset=utf-8',
-          })
-
-          response.end(
-            JSON.stringify({
-              ok: false,
-            }),
-          )
-
-          return
-        }
-      }
 
       // ------------------------------------------------------
       // CORS
