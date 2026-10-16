@@ -2326,16 +2326,6 @@ function App() {
                 </button>
               ),
             )}
-
-            <GoodDayCards
-              onSelect={(title) => {
-                setCardCreatorOccasion({
-                  title,
-                  calendar: 'personal',
-                  congratulatable: true,
-                })
-              }}
-            />
           </div>
 
           {/* =========================
@@ -2445,6 +2435,23 @@ function App() {
               </button>
             )}
           </section>
+
+
+          {/* =========================
+              GOOD DAY CARDS
+            ========================= */}
+
+          <div className="good-day-cards-row">
+            <GoodDayCards
+              onSelect={(title) => {
+                setCardCreatorOccasion({
+                  title,
+                  calendar: 'personal',
+                  congratulatable: true,
+                })
+              }}
+            />
+          </div>
 
           {/* =========================
               CALENDAR HEADER

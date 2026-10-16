@@ -2733,3 +2733,13 @@ a {
   background: #ffedd5;
   transform: translateX(2px);
 }
+
+.good-day-cards-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.good-day-cards-row .good-day-cards {
+  position: relative;
+}
