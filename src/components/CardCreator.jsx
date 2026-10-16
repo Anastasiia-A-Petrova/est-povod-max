@@ -483,9 +483,10 @@ function CardCreator({
     occasion.infoUrl || null
 
   const shareCaption = [
-    '☀️ Открытка создана в приложении «ЕСТЬ ПОВОД!»',
+    '☀️ Открытка из приложения «ЕСТЬ ПОВОД!»',
     `🔎 Подробнее о празднике: ${infoUrl || 'Ссылка не указана'}`,
     '🌐 Сайт «ЕСТЬ ПОВОД!»: https://est-povod.layero.app/',
+    '❤️ ЕСТЬ ПОВОД! в MAX: https://max.ru/se14632161_bot',
   ].join('\n\n')
 
   /*

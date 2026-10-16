@@ -3061,6 +3061,16 @@ function App() {
         </section>
       </main>
 
+      <footer className="app-footer">
+        <a
+          href="https://max.ru/se14632161_bot"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          🤖 «ЕСТЬ ПОВОД!» в мессенджере MAX
+        </a>
+      </footer>
+
       {/* =========================
           PERSONAL MODAL
          ========================= */}
