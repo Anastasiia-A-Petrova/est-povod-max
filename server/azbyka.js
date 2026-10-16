@@ -1471,12 +1471,16 @@ if (
           const host =
             sourceUrl.hostname.toLowerCase()
 
+          const isPrivateHost =
+            host === 'localhost' ||
+            host === '127.0.0.1' ||
+            host === '0.0.0.0' ||
+            host === '::1' ||
+            host.endsWith('.localhost')
+
           const isAllowedHost =
             sourceUrl.protocol === 'https:' &&
-            (
-              host === 'azbyka.ru' ||
-              host.endsWith('.azbyka.ru')
-            )
+            !isPrivateHost
 
           if (!isAllowedHost) {
             response.writeHead(403, {
@@ -1487,7 +1491,7 @@ if (
             response.end(
               JSON.stringify({
                 error:
-                  'Этот источник изображений запрещён.',
+                  'Этот адрес изображения запрещён.',
               }),
             )
 
@@ -1519,12 +1523,16 @@ if (
           const finalHost =
             finalUrl.hostname.toLowerCase()
 
+          const finalIsPrivateHost =
+            finalHost === 'localhost' ||
+            finalHost === '127.0.0.1' ||
+            finalHost === '0.0.0.0' ||
+            finalHost === '::1' ||
+            finalHost.endsWith('.localhost')
+
           const finalHostAllowed =
             finalUrl.protocol === 'https:' &&
-            (
-              finalHost === 'azbyka.ru' ||
-              finalHost.endsWith('.azbyka.ru')
-            )
+            !finalIsPrivateHost
 
           if (!finalHostAllowed) {
             throw new Error(
