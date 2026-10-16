@@ -251,7 +251,7 @@ function extractResults(html) {
       source: SOURCE,
     })
 
-    if (results.length >= 100) {
+    if (results.length >= 80) {
       break
     }
   }

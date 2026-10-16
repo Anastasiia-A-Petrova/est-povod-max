@@ -38,9 +38,12 @@
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="ЕСТЬ ПОВОД! — праздники и открытки для близких" />
+    <meta
+      property="og:image:alt"
+      content="ЕСТЬ ПОВОД! — праздники и открытки для близких"
+    />
 
-    <!-- Карточка предпросмотра для платформ, поддерживающих Twitter Cards -->
+    <!-- Карточка предпросмотра -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -52,12 +55,51 @@
     />
     <meta
       name="twitter:image"
-      content="https://est-povod-nnm.pages.dev/og-image.png"
+      content="https://est-povod.layero.app/og-image.png"
     />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) { return; }
+        }
+        k=e.createElement(t),
+        a=e.getElementsByTagName(t)[0],
+        k.async=1,
+        k.src=r,
+        a.parentNode.insertBefore(k,a)
+      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=113655074', 'ym');
+
+      ym(113655074, 'init', {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        referrer: document.referrer,
+        url: location.href,
+        accurateTrackBounce: true,
+        trackLinks: true
+      });
+    </script>
+    <!-- /Yandex.Metrika counter -->
   </head>
 
   <body>
+    <noscript>
+      <div>
+        <img
+          src="https://mc.yandex.ru/watch/113655074"
+          style="position:absolute; left:-9999px;"
+          alt=""
+        />
+      </div>
+    </noscript>
+
     <div id="root"></div>
+
     <script src="https://st.max.ru/js/max-web-app.js"></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>

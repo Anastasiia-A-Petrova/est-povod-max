@@ -587,10 +587,10 @@ export async function searchReadyCards(
   )
 
   /*
-   * Максимум 100 результатов на API.
+   * Максимум 80 результатов на API.
    */
   const results =
-    allResults.slice(0, 100)
+    allResults.slice(0, 80)
 
   console.log(
     '[ReadyCards] Всего уникальных:',
