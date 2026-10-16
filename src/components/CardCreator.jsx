@@ -1061,6 +1061,72 @@ function CardCreator({
     setSelectedReadyCard(null)
   }
 
+  const fetchReadyCardBlob = async (imageUrl) => {
+    /*
+    * 1. Сначала пробуем получить картинку напрямую.
+    * Это самый быстрый вариант, если источник
+    * разрешает CORS.
+    */
+    try {
+      const response = await fetch(imageUrl)
+
+      if (response.ok) {
+        const blob = await response.blob()
+
+        if (blob.type?.startsWith('image/')) {
+          return blob
+        }
+      }
+    } catch (error) {
+      console.warn(
+        'Direct ready-card fetch failed:',
+        error,
+      )
+    }
+
+    /*
+    * 2. Если источник запретил прямой fetch,
+    * пробуем через наш backend image-proxy.
+    */
+    try {
+      const proxyUrl = new URL(IMAGE_PROXY_URL)
+
+      proxyUrl.searchParams.set(
+        'url',
+        imageUrl,
+      )
+
+      const response = await fetch(
+        proxyUrl.href,
+      )
+
+      if (!response.ok) {
+        throw new Error(
+          `Proxy HTTP ${response.status}`,
+        )
+      }
+
+      const blob = await response.blob()
+
+      if (!blob.type?.startsWith('image/')) {
+        throw new Error(
+          `Прокси вернул не изображение: ${
+            blob.type || 'unknown'
+          }`,
+        )
+      }
+
+      return blob
+    } catch (error) {
+      console.error(
+        'Ready-card proxy fetch failed:',
+        error,
+      )
+
+      throw error
+    }
+  }
+
   const handleReadyCardDownload = async () => {
     if (
       !selectedReadyCard?.image ||
@@ -1072,18 +1138,16 @@ function CardCreator({
     setReadyCardActionLoading(true)
 
     try {
-      const response = await fetch(
+      /*
+      * Получаем настоящий файл картинки.
+      *
+      * fetchReadyCardBlob сначала попробует
+      * скачать напрямую, а если источник
+      * запрещает CORS — через наш backend proxy.
+      */
+      const blob = await fetchReadyCardBlob(
         selectedReadyCard.image,
       )
-
-      if (!response.ok) {
-        throw new Error(
-          `HTTP ${response.status}`,
-        )
-      }
-
-      const blob =
-        await response.blob()
 
       const extension =
         blob.type === 'image/png'
@@ -1094,37 +1158,57 @@ function CardCreator({
               ? 'webp'
               : 'jpg'
 
-      const fileName =
-        makeFileName(
-          `${selectedReadyCard.title || occasion.title} — готовая открытка`,
-          extension,
-        )
+      const fileName = makeFileName(
+        `${
+          selectedReadyCard.title ||
+          occasion.title
+        } — готовая открытка`,
+        extension,
+      )
 
+      /*
+      * Создаём временную локальную ссылку
+      * на полученный файл.
+      */
       const blobUrl =
         URL.createObjectURL(blob)
 
-      const link =
-        document.createElement('a')
+      try {
+        const link =
+          document.createElement('a')
 
-      link.href = blobUrl
-      link.download = fileName
+        link.href = blobUrl
+        link.download = fileName
+        link.style.display = 'none'
 
-      document.body.appendChild(link)
-      link.click()
-      link.remove()
+        document.body.appendChild(link)
 
-      URL.revokeObjectURL(blobUrl)
-    } catch {
+        link.click()
+        link.remove()
+      } finally {
+        /*
+        * Не удаляем Blob URL мгновенно.
+        * На мобильных браузерах скачивание
+        * может начаться не сразу.
+        */
+        setTimeout(() => {
+          URL.revokeObjectURL(blobUrl)
+        }, 3000)
+      }
+    } catch (error) {
+      console.error(
+        'Ready-card download failed:',
+        error,
+      )
 
       /*
-      * Это как раз тот случай, когда внешний
-      * сайт может запретить fetch из браузера
-      * через CORS.
+      * ПОСЛЕДНИЙ FALLBACK.
       *
-      * Пока локально не подключаем Cloudflare.
-      * Вместо этого открываем оригинал —
-      * пользователь всё равно сможет сохранить
-      * изображение средствами браузера / Telegram.
+      * Только если:
+      * - прямой fetch не сработал
+      * - backend proxy тоже не сработал
+      *
+      * тогда открываем оригинал.
       */
       window.open(
         selectedReadyCard.image,
@@ -1148,22 +1232,14 @@ function CardCreator({
 
     try {
       /*
-      * Сначала пробуем получить сам файл.
-      * Если источник разрешает CORS, можем
-      * поделиться именно изображением.
+      * Получаем настоящий файл картинки.
+      *
+      * Сначала напрямую, затем через
+      * наш backend image-proxy.
       */
-      const response = await fetch(
+      const blob = await fetchReadyCardBlob(
         selectedReadyCard.image,
       )
-
-      if (!response.ok) {
-        throw new Error(
-          `HTTP ${response.status}`,
-        )
-      }
-
-      const blob =
-        await response.blob()
 
       const extension =
         blob.type === 'image/png'
@@ -1174,25 +1250,40 @@ function CardCreator({
               ? 'webp'
               : 'jpg'
 
-      const file =
-        new File(
-          [blob],
-          makeFileName(
-            `${selectedReadyCard.title || occasion.title} — готовая открытка`,
-            extension,
-          ),
-          {
-            type:
-              blob.type ||
-              'image/jpeg',
-          },
-        )
+      const fileName = makeFileName(
+        `${
+          selectedReadyCard.title ||
+          occasion.title
+        } — готовая открытка`,
+        extension,
+      )
 
+      const file = new File(
+        [blob],
+        fileName,
+        {
+          type:
+            blob.type ||
+            'image/jpeg',
+        },
+      )
+
+      const title =
+        `ЕСТЬ ПОВОД! — ${
+          selectedReadyCard.title ||
+          occasion.title
+        }`
+
+      /*
+      * 1. Лучший вариант:
+      * системное меню "Поделиться"
+      * с настоящим файлом изображения.
+      */
       if (
         typeof navigator !== 'undefined' &&
         typeof navigator.share === 'function'
       ) {
-        let canShareFile = true
+        let canShareFile = false
 
         if (
           typeof navigator.canShare ===
@@ -1209,36 +1300,102 @@ function CardCreator({
         }
 
         if (canShareFile) {
+          try {
+            await navigator.share({
+              files: [file],
+              title,
+              text: shareCaption,
+            })
+
+            return
+          } catch (error) {
+            /*
+            * Пользователь сам закрыл
+            * системное меню — ничего
+            * больше делать не надо.
+            */
+            if (error?.name === 'AbortError') {
+              return
+            }
+
+            console.warn(
+              'File share failed:',
+              error,
+            )
+          }
+        }
+
+        /*
+        * 2. Если браузер умеет Web Share,
+        * но не умеет передавать файл,
+        * делимся хотя бы текстом и ссылками.
+        */
+        try {
           await navigator.share({
-            files: [file],
-            title: `ЕСТЬ ПОВОД! — ${
-              selectedReadyCard.title ||
-              occasion.title
-            }`,
+            title,
             text: shareCaption,
           })
 
           return
+        } catch (error) {
+          if (error?.name === 'AbortError') {
+            return
+          }
+
+          console.warn(
+            'Text share failed:',
+            error,
+          )
         }
       }
 
       /*
-      * Если браузер не умеет делиться файлами,
-      * открываем оригинал.
+      * 3. Если Web Share вообще не работает,
+      * сохраняем сам файл.
+      *
+      * Это лучше, чем сразу отправлять
+      * пользователя на внешний сайт.
       */
-      window.open(
-        selectedReadyCard.image,
-        '_blank',
-        'noopener,noreferrer',
+      const blobUrl =
+        URL.createObjectURL(blob)
+
+      try {
+        const link =
+          document.createElement('a')
+
+        link.href = blobUrl
+        link.download = fileName
+        link.style.display = 'none'
+
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+      } finally {
+        setTimeout(() => {
+          URL.revokeObjectURL(blobUrl)
+        }, 3000)
+      }
+
+      alert(
+        'Открытка сохранена. Теперь её можно отправить как обычное изображение.',
       )
     } catch (error) {
-
-      if (
-        error?.name === 'AbortError'
-      ) {
+      if (error?.name === 'AbortError') {
         return
       }
 
+      console.error(
+        'Ready-card share failed:',
+        error,
+      )
+
+      /*
+      * 4. ПОСЛЕДНИЙ FALLBACK.
+      *
+      * Только если не удалось даже получить
+      * файл напрямую или через proxy,
+      * открываем оригинал изображения.
+      */
       window.open(
         selectedReadyCard.image,
         '_blank',
