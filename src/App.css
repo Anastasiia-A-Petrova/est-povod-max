@@ -487,22 +487,22 @@ a {
   min-height: 44px;
   padding: 0 15px;
 
-  border: 1px solid #e1d5c2;
+  border: 1px solid #ead6df;
   border-radius: 13px;
 
   background: linear-gradient(
     135deg,
-    #fffaf2,
-    #faf3e7
+    #fff8fb,
+    #f7edf2
   );
 
-  color: #9a7647;
+  color: #9a6077;
 
   font-size: 12px;
   font-weight: 800;
 
   box-shadow:
-    0 4px 12px rgba(178, 139, 97, 0.08);
+    0 4px 12px rgba(194, 126, 151, 0.10);
 
   transition:
     border-color 0.18s ease,
@@ -513,18 +513,18 @@ a {
 }
 
 .today-button:hover {
-  border-color: #d5bc96;
+  border-color: #dcb8c7;
 
   background: linear-gradient(
     135deg,
-    #fff6e8,
-    #f8eddc
+    #fff3f7,
+    #f3e3ea
   );
 
-  color: #87643b;
+  color: #875269;
 
   box-shadow:
-    0 6px 16px rgba(178, 139, 97, 0.14);
+    0 6px 16px rgba(194, 126, 151, 0.16);
 
   transform: translateY(-1px);
 }
@@ -548,13 +548,13 @@ a {
   min-height: 40px;
   padding: 0 12px;
 
-  border: 1px solid #e1d7c6;
+  border: 1px solid #ead8e0;
   border-radius: 12px;
 
   background: linear-gradient(
     135deg,
-    #fff6e8,
-    #f8eddc
+    #fff8fb,
+    #f7eef3
   );
 
   color: var(--text);
@@ -566,7 +566,7 @@ a {
   cursor: pointer;
 
   box-shadow:
-    0 3px 10px rgba(178, 139, 97, 0.08);
+    0 3px 10px rgba(194, 126, 151, 0.08);
 
   transition:
     border-color 0.18s ease,
@@ -576,11 +576,11 @@ a {
 }
 
 .date-picker-button input:hover {
-  border-color: #d2a45f;
-  background: var(--gold-soft);
+  border-color: #d9afbf;
+  background: #f7e8ee;
 
   box-shadow:
-    0 5px 14px rgba(178, 139, 97, 0.12);
+    0 5px 14px rgba(194, 126, 151, 0.13);
 
   transform: translateY(-1px);
 }
@@ -588,11 +588,11 @@ a {
 .date-picker-button input:focus {
   outline: none;
 
-  border-color: var(--gold);
+  border-color: #d287a0;
 
   box-shadow:
-    0 0 0 3px rgba(210, 164, 95, 0.14),
-    0 5px 14px rgba(178, 139, 97, 0.10);
+    0 0 0 3px rgba(210, 135, 160, 0.14),
+    0 5px 14px rgba(194, 126, 151, 0.10);
 }
 
 @media (max-width: 640px) {
@@ -2379,13 +2379,13 @@ a {
 
 .year-calendar-button {
   border: 0;
-  background: #fff1e8;
+  background: #f8edf2;
   padding: 8px 12px;
   border-radius: 12px;
   font: inherit;
   font-size: 14px;
   font-weight: 600;
-  color: #110703;
+  color: #765365;
   cursor: pointer;
   transition:
     background 0.2s ease,
@@ -2395,13 +2395,17 @@ a {
 }
 
 .year-calendar-button:hover {
-  background: #ffe2d2;
-  color: #040b13;
+  background: #f1dce5;
+  color: #654555;
   transform: translateY(-1px);
 }
 
 .year-calendar-button.active {
-  background: #2073e0;
+  background: linear-gradient(
+    135deg,
+    #d287a0,
+    #9b83ad
+  );
   color: #fff;
 }
 
@@ -2431,8 +2435,8 @@ a {
   min-width: 0;
   padding: 12px 10px 10px;
   border-radius: 16px;
-  background: #fffaf7;
-  border: 1px solid #f3e7df;
+  background: #fdfbfc;
+  border: 1px solid #eadfe5;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -2440,7 +2444,7 @@ a {
 
 .year-month:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(180, 120, 90, 0.1);
+  box-shadow: 0 6px 18px rgba(177, 130, 158, 0.12);
 }
 
 .year-month-title {
@@ -2454,13 +2458,13 @@ a {
   font: inherit;
   font-size: 16px;
   font-weight: 700;
-  color: #c45d3a;
+  color: #9a6077;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .year-month-title:hover {
-  color: #a94728;
+  color: #7f4d64;
   text-decoration: none;
 }
 
@@ -2481,7 +2485,7 @@ a {
   text-align: center;
   font-size: 10px;
   font-weight: 600;
-  color: #b8aaa2;
+  color: var(--text-muted);
 }
 
 
@@ -2496,7 +2500,7 @@ a {
   padding: 0;
   font: inherit;
   font-size: 11px;
-  color: #514943;
+  color: var(--text-soft);
   cursor: pointer;
   transition:
     background 0.15s ease,
@@ -2505,8 +2509,8 @@ a {
 }
 
 .year-day:hover {
-  background: #ffe9dc;
-  color: #a94728;
+  background: #f8e9ef;
+  color: #8f5870;
   transform: scale(1.08);
 }
 
@@ -2519,18 +2523,22 @@ a {
 
 .year-day.today {
   font-weight: 700;
-  color: #d45d3a;
-  box-shadow: inset 0 0 0 1.5px #f0a080;
+  color: var(--blue-dark);
+  box-shadow: inset 0 0 0 1.5px #9fc4cf;
 }
 
 
 /* Выбранная дата */
 
 .year-day.selected {
-  background: #e97852;
+  background: linear-gradient(
+    135deg,
+    #d287a0,
+    #9b83ad
+  );
   color: #fff;
   font-weight: 700;
-  box-shadow: 0 2px 5px rgba(210, 100, 65, 0.2);
+  box-shadow: 0 2px 6px rgba(155, 131, 173, 0.22);
 }
 
 
@@ -2538,7 +2546,7 @@ a {
 
 .year-day.has-occasion:not(.selected) {
   font-weight: 700;
-  color: #7d5a48;
+  color: #76586a;
 }
 
 
@@ -2551,7 +2559,7 @@ a {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e97852;
+  background: #d287a0;
   transform: translateX(-50%);
 }
 
@@ -2670,8 +2678,8 @@ a {
   border: 0;
   border-radius: 14px;
   padding: 10px 16px;
-  background: #f9d897;
-  color: #5c3b00;
+  background: #f3d6e1;
+  color: #7d4f63;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -2704,11 +2712,11 @@ a {
   padding: 8px;
 
   background: #ffffff;
-  border: 1px solid #f0dfc5;
+  border: 1px solid #eadfe5;
   border-radius: 14px;
 
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.14);
+    0 10px 30px rgba(177, 130, 158, 0.14);
 }
 
 .good-day-cards-menu button {
@@ -2717,8 +2725,8 @@ a {
   border-radius: 10px;
   padding: 11px 13px;
 
-  background: #fff7ed;
-  color: #4a3524;
+  background: #faf1f5;
+  color: #6f4b5b;
 
   font: inherit;
   text-align: left;
@@ -2730,7 +2738,8 @@ a {
 }
 
 .good-day-cards-menu button:hover {
-  background: #ffedd5;
+  background: #f3dce5;
+  color: #684355;
   transform: translateX(2px);
 }
 

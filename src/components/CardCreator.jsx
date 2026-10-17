@@ -114,84 +114,84 @@ const WARM_COLORS = [
   {
     id: 'cream',
     name: 'Кремовый',
-    value: '#f7eddf',
+    value: '#f1dfc6',
     text: '#493c32',
   },
 
   {
     id: 'rose',
     name: 'Пудровый',
-    value: '#f3d8dc',
+    value: '#eebfc9',
     text: '#4b353b',
   },
 
   {
     id: 'sage',
     name: 'Шалфей',
-    value: '#dce7d8',
+    value: '#c8ddc2',
     text: '#344238',
   },
 
   {
     id: 'sky',
     name: 'Небесный',
-    value: '#dce9f3',
+    value: '#c5dff0',
     text: '#34414d',
   },
 
   {
     id: 'sand',
     name: 'Песочный',
-    value: '#e8dcc4',
+    value: '#dfcba6',
     text: '#493d2f',
   },
 
   {
     id: 'lavender',
     name: 'Лавандовый',
-    value: '#e4dcef',
+    value: '#d5c5e8',
     text: '#43394d',
   },
 
   {
     id: 'butter',
     name: 'Сливочный',
-    value: '#f6e7b8',
+    value: '#f2d98d',
     text: '#51452d',
   },
 
   {
     id: 'terracotta',
     name: 'Терракотовый',
-    value: '#e8c1ad',
+    value: '#dda68b',
     text: '#51382e',
   },
 
   {
     id: 'mist',
     name: 'Туманный',
-    value: '#dce1e2',
+    value: '#cbd6d8',
     text: '#384144',
   },
 
   {
     id: 'pearl',
     name: 'Жемчужный',
-    value: '#eee9e4',
+    value: '#e4d9d1',
     text: '#443f3b',
   },
 
   {
     id: 'apricot',
     name: 'Абрикосовый',
-    value: '#f3d3b5',
+    value: '#efbd91',
     text: '#513c2d',
   },
 
   {
     id: 'dusty-blue',
     name: 'Дымчато-синий',
-    value: '#ccdce5',
+    value: '#b4d0df',
     text: '#35434c',
   },
 ]
@@ -200,84 +200,84 @@ const MINIMAL_COLORS = [
   {
     id: 'white',
     name: 'Белый',
-    value: '#fafafa',
+    value: '#ffffff',
     accent: '#1f2933',
   },
 
   {
     id: 'ivory',
     name: 'Слоновая кость',
-    value: '#f7f4ed',
+    value: '#f5efe3',
     accent: '#39352f',
   },
 
   {
     id: 'cream',
     name: 'Молочный',
-    value: '#f2ede4',
+    value: '#f3e4d2',
     accent: '#443d36',
   },
 
   {
     id: 'sand',
     name: 'Песочный',
-    value: '#ebe6dc',
+    value: '#e5d3b8',
     accent: '#45413b',
   },
 
   {
     id: 'mist',
     name: 'Серый туман',
-    value: '#e9eceb',
+    value: '#dfe7e6',
     accent: '#343c3d',
   },
 
   {
     id: 'stone',
     name: 'Каменный',
-    value: '#deded9',
+    value: '#d3d5d1',
     accent: '#303330',
   },
 
   {
     id: 'blue',
     name: 'Холодный',
-    value: '#edf3f7',
+    value: '#d8e8f0',
     accent: '#263b4d',
   },
 
   {
     id: 'ice',
     name: 'Лёд',
-    value: '#e5eef2',
+    value: '#c8dfe8',
     accent: '#304653',
   },
 
   {
     id: 'sage',
     name: 'Шалфей',
-    value: '#e4ebe3',
+    value: '#cddfc9',
     accent: '#344238',
   },
 
   {
     id: 'dusty-rose',
     name: 'Пыльная роза',
-    value: '#eee3e4',
+    value: '#e4cdd2',
     accent: '#493d40',
   },
 
   {
     id: 'lavender',
     name: 'Лаванда',
-    value: '#e9e6ef',
+    value: '#d9d0e6',
     accent: '#413d4b',
   },
 
   {
     id: 'charcoal',
     name: 'Графит',
-    value: '#e2e3e1',
+    value: '#c9cdcb',
     accent: '#252827',
   },
 ]
@@ -1509,7 +1509,7 @@ function CardCreator({
         <div className="bright-kicker">
           {isOrthodox
             ? 'ПРАВОСЛАВНЫЙ ПРАЗДНИК'
-            : 'С ПРАЗДНИКОМ!'}
+            : 'ХОРОШЕГО НАСТРОЕНИЯ!'}
         </div>
 
         {renderOccasionImage()}
@@ -1777,7 +1777,7 @@ function CardCreator({
                           </span>
 
                           <strong>
-                            С ПРАЗДНИКОМ!
+                            ХОРОШЕГО НАСТРОЕНИЯ!
                           </strong>
 
                           <span className="style-preview-dot" />
