@@ -2049,7 +2049,6 @@ const occasions = [
     congratulatable: true,
     recipients: ['Спасателям', 'Коллегам', 'Друзьям'],
   },
-
 ]
 
 export default occasions
