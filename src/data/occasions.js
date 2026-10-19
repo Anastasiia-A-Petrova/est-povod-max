@@ -19,22 +19,6 @@ const occasions = [
     recipients: ['Родным', 'Друзьям'],
   },
 
-  {
-    id: 'student-day',
-    date: '01-25',
-    title: 'День студента',
-    description:
-      'Татьянин день и повод поздравить студентов, бывших студентов и преподавателей.',
-    category: 'professional',
-    categoryLabel: 'Профессиональные',
-    icon: '🎓',
-    calendar: 'secular',
-    type: 'professional',
-    priority: 88,
-    congratulatable: true,
-    recipients: ['Друзьям', 'Коллегам'],
-  },
-
   // =========================================================
   // ФЕВРАЛЬ
   // =========================================================
@@ -1056,12 +1040,7 @@ const occasions = [
 
   {
     id: 'energy-day',
-    dateRule: {
-      type: 'nthWeekday',
-      month: 12,
-      weekday: 0,
-      occurrence: 3,
-    },
+    date: '12-22',
     title: 'День энергетика',
     description:
       'Профессиональный праздник работников энергетической отрасли.',
@@ -1090,6 +1069,988 @@ const occasions = [
     congratulatable: true,
     recipients: ['Родным', 'Друзьям', 'Коллегам'],
   },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — ЯНВАРЬ
+  // =========================================================
+
+  {
+    id: 'nature-reserves-day',
+    date: '01-11',
+    title: 'День заповедников и национальных парков',
+    description:
+      'Российский экологический праздник, посвящённый заповедникам, национальным паркам и людям, которые сохраняют природу.',
+    category: 'nature',
+    categoryLabel: 'Природа',
+    icon: '🌲',
+    calendar: 'secular',
+    type: 'nature',
+    priority: 72,
+    congratulatable: true,
+    recipients: ['Экологам', 'Друзьям', 'Коллегам'],
+  },
+
+  {
+    id: 'prosecutors-day',
+    date: '01-12',
+    title: 'День работника прокуратуры',
+    description:
+      'Профессиональный праздник работников прокуратуры Российской Федерации.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '⚖️',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 88,
+    congratulatable: true,
+    recipients: ['Работникам прокуратуры', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'russian-press-day',
+    date: '01-13',
+    title: 'День российской печати',
+    description:
+      'Профессиональный праздник журналистов, редакторов, издателей и работников средств массовой информации.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '📰',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Журналистам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'hug-day',
+    date: '01-21',
+    title: 'Международный день объятий',
+    description:
+      'Тёплый повод обнять близкого человека или отправить ему несколько добрых слов.',
+    category: 'kindness',
+    categoryLabel: 'Добрые поводы',
+    icon: '🤗',
+    calendar: 'secular',
+    type: 'kindness',
+    priority: 88,
+    congratulatable: true,
+    recipients: ['Родным', 'Любимым', 'Друзьям'],
+  },
+
+  {
+    id: 'customs-international-day',
+    date: '01-26',
+    title: 'Международный день таможенника',
+    description:
+      'Профессиональный праздник сотрудников таможенных служб разных стран.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🛃',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 82,
+    congratulatable: true,
+    recipients: ['Таможенникам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'russian-students-day',
+    date: '01-25',
+    title: 'День российского студенчества',
+    description:
+      'Праздник российских студентов, также известный как Татьянин день.',
+    category: 'education',
+    categoryLabel: 'Образование',
+    icon: '🎓',
+    calendar: 'secular',
+    type: 'education',
+    priority: 96,
+    congratulatable: true,
+    recipients: ['Студентам', 'Одногруппникам', 'Друзьям'],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — ФЕВРАЛЬ
+  // =========================================================
+
+  {
+    id: 'russian-science-day',
+    date: '02-08',
+    title: 'День российской науки',
+    description:
+      'Праздник учёных, исследователей и всех, кто занимается развитием российской науки.',
+    category: 'science',
+    categoryLabel: 'Наука',
+    icon: '🔬',
+    calendar: 'secular',
+    type: 'science',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Учёным', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'dentist-day',
+    date: '02-09',
+    title: 'Международный день стоматолога',
+    description:
+      'Профессиональный праздник стоматологов и специалистов стоматологической сферы.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🦷',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Стоматологам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'diplomatic-worker-day',
+    date: '02-10',
+    title: 'День дипломатического работника',
+    description:
+      'Профессиональный праздник российских дипломатов и работников дипломатической службы.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🌐',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 82,
+    congratulatable: true,
+    recipients: ['Дипломатам', 'Коллегам'],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — МАРТ
+  // =========================================================
+
+  {
+    id: 'cats-day-russia',
+    date: '03-01',
+    title: 'День кошек в России',
+    description:
+      'Добрый неофициальный праздник домашних кошек и всех, кто их любит.',
+    category: 'fun',
+    categoryLabel: 'Необычные',
+    icon: '🐈',
+    calendar: 'secular',
+    type: 'fun',
+    priority: 88,
+    congratulatable: true,
+    recipients: ['Друзьям', 'Любителям кошек'],
+  },
+
+  {
+    id: 'writers-day',
+    date: '03-03',
+    title: 'Всемирный день писателя',
+    description:
+      'Праздник писателей, авторов и всех, кто создаёт литературные произведения.',
+    category: 'creative',
+    categoryLabel: 'Творчество',
+    icon: '✍️',
+    calendar: 'secular',
+    type: 'creative',
+    priority: 80,
+    congratulatable: true,
+    recipients: ['Писателям', 'Друзьям', 'Коллегам'],
+  },
+
+  {
+    id: 'culture-worker-day',
+    date: '03-25',
+    title: 'День работника культуры',
+    description:
+      'Профессиональный праздник работников культуры, искусства, музеев, библиотек и творческих учреждений.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🎭',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 92,
+    congratulatable: true,
+    recipients: ['Работникам культуры', 'Коллегам', 'Друзьям'],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — АПРЕЛЬ
+  // =========================================================
+
+  {
+    id: 'geologist-day',
+    dateRule: {
+      type: 'nthWeekday',
+      month: 4,
+      weekday: 0,
+      occurrence: 1,
+    },
+    title: 'День геолога',
+    description:
+      'Профессиональный праздник геологов и специалистов, связанных с изучением и освоением недр.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '⛏️',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 92,
+    congratulatable: true,
+    recipients: ['Геологам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'childrens-book-day',
+    date: '04-02',
+    title: 'Международный день детской книги',
+    description:
+      'Праздник детской литературы, книг и любви к чтению с самого детства.',
+    category: 'culture',
+    categoryLabel: 'Культура',
+    icon: '📚',
+    calendar: 'secular',
+    type: 'culture',
+    priority: 76,
+    congratulatable: true,
+    recipients: ['Родным', 'Друзьям'],
+  },
+
+  {
+    id: 'health-day',
+    date: '04-07',
+    title: 'Всемирный день здоровья',
+    description:
+      'Международный день, посвящённый здоровью и заботе о качестве жизни.',
+    category: 'social',
+    categoryLabel: 'Общие',
+    icon: '❤️‍🩹',
+    calendar: 'secular',
+    type: 'social',
+    priority: 72,
+    congratulatable: false,
+    recipients: [],
+  },
+
+  {
+    id: 'russian-animation-day',
+    date: '04-08',
+    title: 'День российской анимации',
+    description:
+      'Профессиональный праздник российских аниматоров и всех, кто создаёт мультфильмы.',
+    category: 'creative',
+    categoryLabel: 'Творчество',
+    icon: '🎞️',
+    calendar: 'secular',
+    type: 'creative',
+    priority: 82,
+    congratulatable: true,
+    recipients: ['Аниматорам', 'Друзьям', 'Коллегам'],
+  },
+
+  {
+    id: 'monuments-day',
+    date: '04-18',
+    title: 'Международный день памятников и исторических мест',
+    description:
+      'День, посвящённый сохранению культурного наследия, памятников и исторических мест.',
+    category: 'culture',
+    categoryLabel: 'Культура',
+    icon: '🏛️',
+    calendar: 'secular',
+    type: 'culture',
+    priority: 66,
+    congratulatable: false,
+    recipients: [],
+  },
+
+  {
+    id: 'occupational-safety-day',
+    date: '04-28',
+    title: 'Всемирный день охраны труда',
+    description:
+      'Международный день, посвящённый безопасности и охране здоровья людей на рабочем месте.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '⛑️',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 70,
+    congratulatable: false,
+    recipients: [],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — МАЙ
+  // =========================================================
+
+  {
+    id: 'radio-day',
+    date: '05-07',
+    title: 'День радио',
+    description:
+      'Профессиональный праздник работников радио, телевидения, связи и всех, кто связан с развитием коммуникаций.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '📻',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 88,
+    congratulatable: true,
+    recipients: ['Работникам связи', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'nurses-day',
+    date: '05-12',
+    title: 'Международный день медицинской сестры',
+    description:
+      'Профессиональный праздник медицинских сестёр и братьев, ежедневно заботящихся о пациентах.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🩺',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 94,
+    congratulatable: true,
+    recipients: ['Медсёстрам', 'Медикам', 'Коллегам'],
+  },
+
+  {
+    id: 'philologist-day',
+    date: '05-25',
+    title: 'День филолога',
+    description:
+      'Профессиональный праздник филологов, преподавателей языка и литературы, переводчиков и исследователей языка.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '📖',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 86,
+    congratulatable: true,
+    recipients: ['Филологам', 'Преподавателям', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'entrepreneur-day',
+    date: '05-26',
+    title: 'День российского предпринимательства',
+    description:
+      'Профессиональный праздник предпринимателей и людей, развивающих собственное дело.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '💼',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Предпринимателям', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'libraries-day',
+    date: '05-27',
+    title: 'Общероссийский день библиотек',
+    description:
+      'Профессиональный праздник библиотекарей и всех, кто сохраняет книги и помогает читателям находить их.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '📚',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Библиотекарям', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'chemist-day',
+    dateRule: {
+      type: 'lastWeekday',
+      month: 5,
+      weekday: 0,
+    },
+    title: 'День химика',
+    description:
+      'Профессиональный праздник работников химической и нефтехимической промышленности.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🧪',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 92,
+    congratulatable: true,
+    recipients: ['Химикам', 'Коллегам', 'Друзьям'],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — ИЮНЬ
+  // =========================================================
+
+  {
+    id: 'social-worker-day',
+    date: '06-08',
+    title: 'День социального работника',
+    description:
+      'Профессиональный праздник людей, которые помогают пожилым, семьям, детям и всем, кому нужна социальная поддержка.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🤝',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Социальным работникам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'shipbuilder-day',
+    date: '06-29',
+    title: 'День кораблестроителя',
+    description:
+      'Профессиональный праздник работников судостроительной промышленности России.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🚢',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 86,
+    congratulatable: true,
+    recipients: ['Кораблестроителям', 'Коллегам', 'Друзьям'],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — ИЮЛЬ
+  // =========================================================
+
+  {
+    id: 'traffic-police-day',
+    date: '07-03',
+    title: 'День ГАИ (ГИБДД)',
+    description:
+      'Профессиональный праздник сотрудников Государственной инспекции безопасности дорожного движения.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🚔',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Сотрудникам ГИБДД', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'russian-post-day',
+    dateRule: {
+      type: 'nthWeekday',
+      month: 7,
+      weekday: 0,
+      occurrence: 2,
+    },
+    title: 'День российской почты',
+    description:
+      'Профессиональный праздник работников почтовой связи России.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '📮',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 92,
+    congratulatable: true,
+    recipients: ['Работникам почты', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'metallurgist-day',
+    dateRule: {
+      type: 'nthWeekday',
+      month: 7,
+      weekday: 0,
+      occurrence: 3,
+    },
+    title: 'День металлурга',
+    description:
+      'Профессиональный праздник работников металлургической промышленности.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🔥',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 94,
+    congratulatable: true,
+    recipients: ['Металлургам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'trade-workers-day',
+    dateRule: {
+      type: 'nthWeekday',
+      month: 7,
+      weekday: 6,
+      occurrence: 4,
+    },
+    title: 'День работника торговли',
+    description:
+      'Профессиональный праздник работников торговли и сферы обслуживания.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🛍️',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 94,
+    congratulatable: true,
+    recipients: ['Работникам торговли', 'Коллегам', 'Друзьям'],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — АВГУСТ
+  // =========================================================
+
+  {
+    id: 'railway-workers-day',
+    dateRule: {
+      type: 'nthWeekday',
+      month: 8,
+      weekday: 0,
+      occurrence: 1,
+    },
+    title: 'День железнодорожника',
+    description:
+      'Профессиональный праздник работников железнодорожного транспорта России.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🚂',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 96,
+    congratulatable: true,
+    recipients: ['Железнодорожникам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'archaeologist-day',
+    date: '08-15',
+    title: 'День археолога',
+    description:
+      'Профессиональный праздник археологов и исследователей прошлого.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🏺',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 86,
+    congratulatable: true,
+    recipients: ['Археологам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'miners-day',
+    dateRule: {
+      type: 'lastWeekday',
+      month: 8,
+      weekday: 0,
+    },
+    title: 'День шахтёра',
+    description:
+      'Профессиональный праздник работников угольной промышленности и горнодобывающей отрасли.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '⛏️',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 94,
+    congratulatable: true,
+    recipients: ['Шахтёрам', 'Коллегам', 'Друзьям'],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — СЕНТЯБРЬ
+  // =========================================================
+
+  {
+    id: 'financier-day',
+    date: '09-08',
+    title: 'День финансиста',
+    description:
+      'Профессиональный праздник специалистов финансовой сферы России.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '💰',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Финансистам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'tester-day',
+    date: '09-09',
+    title: 'День тестировщика',
+    description:
+      'Неформальный профессиональный праздник специалистов по тестированию программного обеспечения.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🐞',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 88,
+    congratulatable: true,
+    recipients: ['Тестировщикам', 'IT-специалистам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'hairdresser-day',
+    date: '09-13',
+    title: 'День парикмахера',
+    description:
+      'Профессиональный праздник парикмахеров, стилистов и мастеров индустрии красоты.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '✂️',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Парикмахерам', 'Стилистам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'machine-builder-day',
+    dateRule: {
+      type: 'lastWeekday',
+      month: 9,
+      weekday: 0,
+    },
+    title: 'День машиностроителя',
+    description:
+      'Профессиональный праздник работников машиностроительной промышленности.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '⚙️',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 94,
+    congratulatable: true,
+    recipients: ['Машиностроителям', 'Инженерам', 'Коллегам', 'Друзьям'],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — ОКТЯБРЬ
+  // =========================================================
+
+  {
+    id: 'agriculture-workers-day',
+    dateRule: {
+      type: 'nthWeekday',
+      month: 10,
+      weekday: 0,
+      occurrence: 2,
+    },
+    title: 'День работника сельского хозяйства',
+    description:
+      'Профессиональный праздник работников сельского хозяйства и перерабатывающей промышленности.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🌾',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 94,
+    congratulatable: true,
+    recipients: ['Работникам сельского хозяйства', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'road-workers-day',
+    dateRule: {
+      type: 'nthWeekday',
+      month: 10,
+      weekday: 0,
+      occurrence: 3,
+    },
+    title: 'День работников дорожного хозяйства',
+    description:
+      'Профессиональный праздник тех, кто строит, ремонтирует и обслуживает дороги, мосты и дорожную инфраструктуру.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🛣️',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 96,
+    congratulatable: true,
+    recipients: ['Дорожникам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'food-industry-workers-day',
+    dateRule: {
+      type: 'nthWeekday',
+      month: 10,
+      weekday: 0,
+      occurrence: 3,
+    },
+    title: 'День работников пищевой промышленности',
+    description:
+      'Профессиональный праздник работников предприятий пищевой промышленности России.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🥫',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 92,
+    congratulatable: true,
+    recipients: ['Работникам пищевой промышленности', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'chefs-day',
+    date: '10-20',
+    title: 'Международный день повара',
+    description:
+      'Профессиональный праздник поваров, кулинаров и всех, кто превращает приготовление еды в искусство.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '👨‍🍳',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 92,
+    congratulatable: true,
+    recipients: ['Поварам', 'Кулинарам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'advertising-workers-day',
+    date: '10-23',
+    title: 'День работников рекламы',
+    description:
+      'Профессиональный праздник специалистов рекламы, маркетинга и коммуникаций.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '📣',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Рекламистам', 'Маркетологам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'russian-customs-day',
+    date: '10-25',
+    title: 'День таможенника Российской Федерации',
+    description:
+      'Профессиональный праздник сотрудников таможенных органов России.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🛃',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Таможенникам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'coach-day',
+    date: '10-30',
+    title: 'День тренера',
+    description:
+      'Профессиональный праздник тренеров, наставников и специалистов спортивной подготовки.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🏅',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 92,
+    congratulatable: true,
+    recipients: ['Тренерам', 'Наставникам', 'Коллегам', 'Друзьям'],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — НОЯБРЬ
+  // =========================================================
+
+  {
+    id: 'police-day-russia',
+    date: '11-10',
+    title: 'День сотрудника органов внутренних дел',
+    description:
+      'Профессиональный праздник сотрудников органов внутренних дел Российской Федерации.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '👮',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 94,
+    congratulatable: true,
+    recipients: ['Сотрудникам МВД', 'Полицейским', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'economist-day',
+    date: '11-11',
+    title: 'День экономиста',
+    description:
+      'Профессиональный праздник российских специалистов в области экономики.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '📈',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Экономистам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'speech-therapist-day',
+    date: '11-14',
+    title: 'Международный день логопеда',
+    description:
+      'Профессиональный праздник логопедов и специалистов по коррекции речи.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🗣️',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 88,
+    congratulatable: true,
+    recipients: ['Логопедам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'international-students-day',
+    date: '11-17',
+    title: 'Международный день студентов',
+    description:
+      'Международный день студенчества, объединяющий учащихся высших учебных заведений разных стран.',
+    category: 'education',
+    categoryLabel: 'Образование',
+    icon: '🎓',
+    calendar: 'secular',
+    type: 'education',
+    priority: 88,
+    congratulatable: true,
+    recipients: ['Студентам', 'Друзьям'],
+  },
+
+  {
+    id: 'mens-day',
+    date: '11-19',
+    title: 'Международный мужской день',
+    description:
+      'Международный день, посвящённый мужчинам, их роли в семье и обществе.',
+    category: 'social',
+    categoryLabel: 'Общие',
+    icon: '👨',
+    calendar: 'secular',
+    type: 'social',
+    priority: 86,
+    congratulatable: true,
+    recipients: ['Мужчинам', 'Родным', 'Любимым', 'Друзьям'],
+  },
+
+  {
+    id: 'university-teacher-day',
+    date: '11-19',
+    title: 'День преподавателя высшей школы',
+    description:
+      'Профессиональный праздник преподавателей российских вузов.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '👩‍🏫',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 90,
+    congratulatable: true,
+    recipients: ['Преподавателям', 'Коллегам'],
+  },
+
+  {
+    id: 'psychologist-day',
+    date: '11-22',
+    title: 'День психолога',
+    description:
+      'Профессиональный праздник российских психологов и специалистов психологической службы.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🧠',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 92,
+    congratulatable: true,
+    recipients: ['Психологам', 'Коллегам', 'Друзьям'],
+  },
+
+  // =========================================================
+  // ДОПОЛНИТЕЛЬНЫЕ ПРАЗДНИКИ — ДЕКАБРЬ
+  // =========================================================
+
+  {
+    id: 'lawyer-day',
+    date: '12-03',
+    title: 'День юриста',
+    description:
+      'Профессиональный праздник российских юристов и специалистов в области права.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '⚖️',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 94,
+    congratulatable: true,
+    recipients: ['Юристам', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'informatics-day',
+    date: '12-04',
+    title: 'День информатики в России',
+    description:
+      'Памятная дата, связанная с историей отечественной вычислительной техники и информатики.',
+    category: 'technology',
+    categoryLabel: 'Технологии',
+    icon: '💻',
+    calendar: 'secular',
+    type: 'technology',
+    priority: 84,
+    congratulatable: true,
+    recipients: ['IT-специалистам', 'Программистам', 'Друзьям', 'Коллегам'],
+  },
+
+  {
+    id: 'registry-office-workers-day',
+    date: '12-18',
+    title: 'День работников органов ЗАГС',
+    description:
+      'Профессиональный праздник работников органов записи актов гражданского состояния.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '💍',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 88,
+    congratulatable: true,
+    recipients: ['Работникам ЗАГС', 'Коллегам', 'Друзьям'],
+  },
+
+  {
+    id: 'rescuer-day',
+    date: '12-27',
+    title: 'День спасателя Российской Федерации',
+    description:
+      'Профессиональный праздник российских спасателей и сотрудников аварийно-спасательных служб.',
+    category: 'professional',
+    categoryLabel: 'Профессиональные',
+    icon: '🛟',
+    calendar: 'secular',
+    type: 'professional',
+    priority: 96,
+    congratulatable: true,
+    recipients: ['Спасателям', 'Коллегам', 'Друзьям'],
+  },
+
 ]
 
 export default occasions
+
