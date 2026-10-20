@@ -20,7 +20,7 @@ const WIKIPEDIA_API =
   'https://ru.wikipedia.org/w/api.php'
 
 const WIKIPEDIA_IMAGE_CACHE_KEY =
-  'greeting-wikipedia-holiday-images'
+  'greeting-wikipedia-holiday-images-v2'
 
 const calendarModes = [
   {
@@ -319,45 +319,44 @@ function saveWikipediaImageCache(cache) {
   }
 }
 
-async function fetchWikipediaImageUrl(
-  title,
-) {
+async function fetchWikipediaImageUrl(title) {
   if (!title) return null
 
   const url =
     `${WIKIPEDIA_API}` +
     `?action=query` +
-    `&generator=search` +
-    `&gsrsearch=${encodeURIComponent(title)}` +
-    `&gsrnamespace=0` +
-    `&gsrlimit=1` +
+    `&titles=${encodeURIComponent(title)}` +
+    `&redirects=1` +
     `&prop=pageimages` +
     `&piprop=thumbnail` +
     `&pithumbsize=120` +
     `&format=json` +
     `&origin=*`
 
-  const response = await fetch(url)
+  try {
+    const response = await fetch(url)
 
-  if (!response.ok) {
-    throw new Error(
-      `Wikipedia HTTP ${response.status}`,
-    )
+    if (!response.ok) {
+      return null
+    }
+
+    const data = await response.json()
+    const pages = Object.values(data?.query?.pages || {})
+    const page = pages[0]
+
+    // Такой статьи в Википедии нет — картинку не берем
+    if (!page || page.missing !== undefined) {
+      return null
+    }
+
+    const thumbnail = page.thumbnail?.source
+
+    return typeof thumbnail === 'string' && thumbnail.trim()
+      ? thumbnail
+      : null
+  } catch {
+    return null
   }
-
-  const data = await response.json()
-
-  const pages = Object.values(
-    data?.query?.pages || {},
-  )
-
-  const thumbnail =
-    pages[0]?.thumbnail?.source
-
-  return typeof thumbnail === 'string' &&
-    thumbnail.trim()
-    ? thumbnail
-    : null
 }
 
 /*
