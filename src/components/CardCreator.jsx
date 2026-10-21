@@ -490,7 +490,7 @@ function CardCreator({
     infoUrl ? `🔎 Подробнее о празднике: ${infoUrl}` : null,
 
     // Эти строки добавляются всегда
-    '🌐 Сайт «ЕСТЬ ПОВОД!»: https://est-povod.layero.app/',
+    '🌐 Сайт «ЕСТЬ ПОВОД!»: https://anastasiia-a-petrova.github.io/est-povod-max/',
     '❤️ ЕСТЬ ПОВОД! в MAX: https://max.ru/se14632161_bot',
   ]
     .filter(Boolean)

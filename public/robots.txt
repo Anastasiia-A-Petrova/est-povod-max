@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://est-povod.layero.app/sitemap.xml
+Sitemap: https://anastasiia-a-petrova.github.io/est-povod-max/sitemap.xml
