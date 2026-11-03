@@ -2288,6 +2288,30 @@ function App() {
             православный календарь,
             идеи поздравлений и тёплые открытки для близких.
           </p>
+
+          <div className="app-links">
+            <a
+              className="app-link app-link-rustore"
+              href="https://www.rustore.ru/catalog/app/ru.anastasiia.estpovod"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>📱</span>
+              Скачать в RuStore
+              <span className="app-link-arrow">↗</span>
+            </a>
+
+            <a
+              className="app-link app-link-max"
+              href="https://max.ru/se14632161_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>💬</span>
+              Открыть в MAX
+              <span className="app-link-arrow">↗</span>
+            </a>
+          </div>
         </div>
       </header>
 
@@ -3078,13 +3102,33 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <a
-          href="https://max.ru/se14632161_bot"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          🤖 «ЕСТЬ ПОВОД!» в мессенджере MAX
-        </a>
+        <div className="footer-title">
+          ЕСТЬ ПОВОД! 🌞
+        </div>
+
+        <div className="footer-links">
+          <a
+            href="https://www.rustore.ru/catalog/app/ru.anastasiia.estpovod"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📱 Приложение в RuStore ↗
+          </a>
+
+          <span className="footer-separator">·</span>
+
+          <a
+            href="https://max.ru/se14632161_bot"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💬 ЕСТЬ ПОВОД! в MAX ↗
+          </a>
+        </div>
+
+        <div className="footer-note">
+          Праздники, памятные даты и тёплые поздравления
+        </div>
       </footer>
 
       {/* =========================

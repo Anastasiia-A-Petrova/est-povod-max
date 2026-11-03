@@ -2669,6 +2669,133 @@ a {
   text-decoration: underline;
 }
 
+/* =========================================================
+   APP LINKS — RUSTORE / MAX
+   ========================================================= */
+
+.app-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.app-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border: 1px solid transparent;
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.app-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(80, 90, 120, 0.10);
+}
+
+.app-link-rustore {
+  color: #ffffff;
+  background: linear-gradient(135deg, #d96b9b, #c65387);
+  border-color: #c65387;
+  box-shadow: 0 3px 10px rgba(198, 83, 135, 0.18);
+}
+
+.app-link-max {
+  color: #ffffff;
+  background: linear-gradient(135deg, #668bd1, #4e70b5);
+  border-color: #4e70b5;
+  box-shadow: 0 3px 10px rgba(78, 112, 181, 0.18);
+}
+
+.app-link-arrow {
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.app-footer {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 30px 16px 28px;
+  text-align: center;
+}
+
+.footer-title {
+  margin-bottom: 12px;
+  color: #718087;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 13px;
+}
+
+.footer-links a {
+  color: #71849a;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #bd7296;
+}
+
+.footer-separator {
+  color: #c5cbd2;
+}
+
+.footer-note {
+  margin-top: 12px;
+  color: #9aa7ab;
+  font-size: 11px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  .app-links {
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .app-link {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .footer-links {
+    gap: 8px;
+    font-size: 12px;
+  }
+}
+
 .good-day-cards {
   position: relative;
   flex-shrink: 0;
