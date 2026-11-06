@@ -11,6 +11,9 @@
   <a href="https://est-povod.layero.app/">
     <img src="https://img.shields.io/badge/Live%20App-Открыть%20приложение-2563eb?style=for-the-badge" alt="Live App" />
   </a>
+  <a href="https://www.rustore.ru/catalog/app/ru.anastasiia.estpovod">
+    <img src="https://img.shields.io/badge/RuStore-Скачать%20для%20Android-1685F8?style=for-the-badge" alt="Скачать в RuStore" />
+  </a>
   <a href="https://github.com/Anastasiia-A-Petrova/est-povod-max">
     <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" alt="GitHub Repository" />
   </a>
@@ -30,7 +33,14 @@
 
 **ЕСТЬ ПОВОД!** — приложение с календарём праздников и личных дат, которое помогает не забывать важные события и быстро найти или создать поздравительную открытку.
 
-Приложение работает как **MAX Mini App** и включает:
+Приложение доступно в двух форматах:
+
+- **MAX Mini App** — запуск непосредственно внутри мессенджера MAX;
+- **Android-приложение** — установка через RuStore.
+
+Обе версии предоставляют доступ к календарю праздников и инструментам создания поздравительных открыток.
+
+Основные возможности:
 
 - 📅 календарь праздников и памятных дат;
 - 🎉 светские и другие календарные события;
@@ -41,13 +51,13 @@
 - 🖼️ сохранение и отправку открыток как изображений;
 - 📱 адаптивный интерфейс для телефона и компьютера.
 
-### 🌐 Приложение
+### 📱 Где попробовать приложение
 
-**https://est-povod.layero.app/**
-
-### 🤖 MAX-бот
-
-**https://max.ru/se14632161_bot**
+| Платформа | Ссылка |
+|---|---|
+| 🌐 Веб-версия | [Открыть приложение](https://est-povod.layero.app/) |
+| 📲 Android | [Скачать в RuStore](https://www.rustore.ru/catalog/app/ru.anastasiia.estpovod) |
+| 🤖 MAX | [Открыть MAX-бот](https://max.ru/se14632161_bot) |
 
 ---
 
