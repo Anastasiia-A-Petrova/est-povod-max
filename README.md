@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://est-povod.layero.app/">
+  <a href="https://anastasiia-a-petrova.github.io/est-povod-max/">
     <img src="https://img.shields.io/badge/Live%20App-Открыть%20приложение-2563eb?style=for-the-badge" alt="Live App" />
   </a>
   <a href="https://www.rustore.ru/catalog/app/ru.anastasiia.estpovod">
@@ -55,7 +55,7 @@
 
 | Платформа | Ссылка |
 |---|---|
-| 🌐 Веб-версия | [Открыть приложение](https://est-povod.layero.app/) |
+| 🌐 Веб-версия | [Открыть приложение] (https://anastasiia-a-petrova.github.io/est-povod-max/) |
 | 📲 Android | [Скачать в RuStore](https://www.rustore.ru/catalog/app/ru.anastasiia.estpovod) |
 | 🤖 MAX | [Открыть MAX-бот](https://max.ru/se14632161_bot) |
 
@@ -213,7 +213,7 @@ Backend используется для запросов, которые не д
 
 Frontend опубликован на Layero:
 
-**https://est-povod.layero.app/**
+**https://anastasiia-a-petrova.github.io/est-povod-max/**
 
 Production-сборка создаётся командой:
 
