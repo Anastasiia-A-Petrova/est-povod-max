@@ -55,7 +55,7 @@
 
 | Платформа | Ссылка |
 |---|---|
-| 🌐 Веб-версия | [Открыть приложение] (https://anastasiia-a-petrova.github.io/est-povod-max/) |
+| 🌐 Веб-версия | [Открыть приложение](https://anastasiia-a-petrova.github.io/est-povod-max/) |
 | 📲 Android | [Скачать в RuStore](https://www.rustore.ru/catalog/app/ru.anastasiia.estpovod) |
 | 🤖 MAX | [Открыть MAX-бот](https://max.ru/se14632161_bot) |
 
@@ -211,7 +211,7 @@ Backend используется для запросов, которые не д
 
 ### Frontend
 
-Frontend опубликован на Layero:
+Frontend опубликован на GitHub:
 
 **https://anastasiia-a-petrova.github.io/est-povod-max/**
 
