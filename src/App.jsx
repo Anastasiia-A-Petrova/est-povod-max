@@ -16,12 +16,6 @@ const NAGER_API =
 const RUSSIAN_CALENDAR_API =
   'https://calendar.kuzyak.in/api/calendar'
 
-const WIKIPEDIA_API =
-  'https://ru.wikipedia.org/w/api.php'
-
-const WIKIPEDIA_IMAGE_CACHE_KEY =
-  'greeting-wikipedia-holiday-images-v2'
-
 const calendarModes = [
   {
     id: 'all',
@@ -283,81 +277,6 @@ function getWikipediaSearchUrl(
   )}`
 }
 
-function getWikipediaCacheKey(title) {
-  return String(title || '')
-    .trim()
-    .toLowerCase()
-}
-
-function readWikipediaImageCache() {
-  try {
-    const saved = localStorage.getItem(
-      WIKIPEDIA_IMAGE_CACHE_KEY,
-    )
-
-    if (!saved) return {}
-
-    const parsed = JSON.parse(saved)
-
-    return parsed &&
-      typeof parsed === 'object'
-      ? parsed
-      : {}
-  } catch {
-    return {}
-  }
-}
-
-function saveWikipediaImageCache(cache) {
-  try {
-    localStorage.setItem(
-      WIKIPEDIA_IMAGE_CACHE_KEY,
-      JSON.stringify(cache),
-    )
-  } catch {
-    // Кеш необязателен.
-  }
-}
-
-async function fetchWikipediaImageUrl(title) {
-  if (!title) return null
-
-  const url =
-    `${WIKIPEDIA_API}` +
-    `?action=query` +
-    `&titles=${encodeURIComponent(title)}` +
-    `&redirects=1` +
-    `&prop=pageimages` +
-    `&piprop=thumbnail` +
-    `&pithumbsize=120` +
-    `&format=json` +
-    `&origin=*`
-
-  try {
-    const response = await fetch(url)
-
-    if (!response.ok) {
-      return null
-    }
-
-    const data = await response.json()
-    const pages = Object.values(data?.query?.pages || {})
-    const page = pages[0]
-
-    // Такой статьи в Википедии нет — картинку не берем
-    if (!page || page.missing !== undefined) {
-      return null
-    }
-
-    const thumbnail = page.thumbnail?.source
-
-    return typeof thumbnail === 'string' && thumbnail.trim()
-      ? thumbnail
-      : null
-  } catch {
-    return null
-  }
-}
 
 /*
  * =========================================================
@@ -1281,13 +1200,6 @@ function App() {
     useState(false)
 
   const [
-    wikipediaImages,
-    setWikipediaImages,
-  ] = useState(() =>
-    readWikipediaImageCache(),
-  )
-
-  const [
     showPersonalModal,
     setShowPersonalModal,
   ] = useState(false)
@@ -1618,127 +1530,6 @@ function App() {
       [currentYear],
     )
 
-  /*
-   * =======================================================
-   * WIKIPEDIA IMAGES
-   * =======================================================
-   *
-   * Эта часть остаётся прежней:
-   * Wikipedia используется для светских
-   * праздников.
-   *
-   * Православные картинки сюда больше
-   * не попадают — их отдаёт Azbyka.
-   */
-
-  useEffect(() => {
-    let cancelled = false
-
-    async function loadWikipediaImages() {
-      const cache =
-        readWikipediaImageCache()
-
-      const secularOccasions = [
-        ...apiOccasions,
-        ...normalizedCustomOccasions,
-      ].filter(
-        (occasion) =>
-          occasion.calendar ===
-            'secular' &&
-          !occasion.imageUrl &&
-          occasion.title,
-      )
-
-      const titles = [
-        ...new Set(
-          secularOccasions.map(
-            (occasion) =>
-              occasion.title,
-          ),
-        ),
-      ]
-
-      const missingTitles =
-        titles.filter((title) => {
-          const key =
-            getWikipediaCacheKey(
-              title,
-            )
-
-          return !Object.prototype.hasOwnProperty.call(
-            cache,
-            key,
-          )
-        })
-
-      if (
-        missingTitles.length ===
-        0
-      ) {
-        if (!cancelled) {
-          setWikipediaImages(cache)
-        }
-
-        return
-      }
-
-      const results =
-        await Promise.all(
-          missingTitles.map(
-            async (title) => {
-              try {
-                const imageUrl =
-                  await fetchWikipediaImageUrl(
-                    title,
-                  )
-
-                return {
-                  key:
-                    getWikipediaCacheKey(
-                      title,
-                    ),
-                  imageUrl,
-                }
-              } catch (error) {
-                console.warn(
-                  'Wikipedia image недоступна:',
-                  title,
-                  error,
-                )
-
-                return {
-                  key:
-                    getWikipediaCacheKey(
-                      title,
-                    ),
-                  imageUrl: null,
-                }
-              }
-            },
-          ),
-        )
-
-      if (cancelled) return
-
-      results.forEach(
-        ({ key, imageUrl }) => {
-          cache[key] = imageUrl
-        },
-      )
-
-      saveWikipediaImageCache(cache)
-      setWikipediaImages(cache)
-    }
-
-    loadWikipediaImages()
-
-    return () => {
-      cancelled = true
-    }
-  }, [
-    apiOccasions,
-    normalizedCustomOccasions,
-  ])
 
   /*
    * =======================================================
@@ -1805,39 +1596,15 @@ function App() {
    */
 
   const allOccasions = useMemo(
-    () =>
-      [
-        ...apiOccasions,
-        ...normalizedCustomOccasions,
-        ...normalizedPersonalOccasions,
-      ].map((occasion) => {
-        if (
-          occasion.imageUrl ||
-          occasion.calendar !==
-            'secular'
-        ) {
-          return occasion
-        }
-
-        const imageUrl =
-          wikipediaImages[
-            getWikipediaCacheKey(
-              occasion.title,
-            )
-          ]
-
-        return imageUrl
-          ? {
-              ...occasion,
-              imageUrl,
-            }
-          : occasion
-      }),
+    () => [
+      ...apiOccasions,
+      ...normalizedCustomOccasions,
+      ...normalizedPersonalOccasions,
+    ],
     [
       apiOccasions,
       normalizedCustomOccasions,
       normalizedPersonalOccasions,
-      wikipediaImages,
     ],
   )
 
