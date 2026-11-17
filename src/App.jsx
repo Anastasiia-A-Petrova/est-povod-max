@@ -1148,6 +1148,7 @@ function normalizeCustomOccasion(
         'Друзьям',
       ],
     infoUrl:
+      occasion.sourceUrl ||
       occasion.infoUrl ||
       getWikipediaSearchUrl(
         occasion.title,
