@@ -135,51 +135,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "rozhdestvenskiy-sochelnik",
-    "date": "01-06",
-    "title": "Рождественский сочельник",
-    "description": "Вечер 6 января у православных христиан — Рождественский сочельник, канун Рождества. В народе его также называют «коляды». Значение святой ночи появления на свет Богомладенца Христа столь велико, что даже ход новой истории и наше летосчисление мы сего...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1759/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "rozhdestvo-khristovo",
-    "date": "01-07",
-    "title": "Рождество Христово",
-    "description": "Рождество Господа и Спаса нашего Иисуса Христа — один из важнейших христианских праздников и государственный праздник в более чем 100 странах мира. В православии Рождество Христово празднуется 7 января (в отличие от католиков, которые отмечают этот п...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/2/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "sobor-presvyatoy-bogoroditsy",
-    "date": "01-08",
-    "title": "Собор Пресвятой Богородицы",
-    "description": "На следующий день после праздника Рождества Христова, 8 января по новому стилю, православный мир отмечает важный праздник – Собор Пресвятой Богородицы. В этот день Православная Церковь с хвалебными и благодарственными песнями обращается к Богомат...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/3189/",
-    "category": "creative",
-    "categoryLabel": "Творчество",
-    "icon": "🎨",
-    "calendar": "secular",
-    "type": "creative",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "mezhdunarodnyy-den-khoreografa",
     "date": "01-09",
     "title": "Международный день хореографа",
@@ -345,21 +300,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "obrezanie-gospodne",
-    "date": "01-14",
-    "title": "Обрезание Господне",
-    "description": "По прошествии восьми дней, когда надлежало обрезать Младенца, дали Ему имя Иисус, нареченное Ангелом прежде зачатия Его во чреве.Евангелие от Луки, 2:21С 4 века христиане празднуют событие, о котором сказано в Евангелии от Луки — обреза...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/170/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "den-obrazovaniya-sledstvennogo-komiteta-rossiyskoy-federatsii",
     "date": "01-15",
     "title": "День образования Следственного комитета Российской Федерации",
@@ -495,21 +435,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "kreschenskiy-sochelnik",
-    "date": "01-18",
-    "title": "Крещенский сочельник",
-    "description": "18 января Русская Православная церковь отмечает день Навечерия Богоявления Господня или Крещенский сочельник. Крещенский сочельник — это вечер-приготовление перед большим православным праздником, который называется Богоявление Господне или Крещен...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1833/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "vsemirnyy-den-snega",
     "date": "01-18",
     "title": "Всемирный день снега",
@@ -555,21 +480,6 @@ const occasions = [
     "icon": "🎄",
     "calendar": "secular",
     "type": "nthWeekday",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "kreschenie-gospodne",
-    "date": "01-19",
-    "title": "Крещение Господне",
-    "description": "Крещение Господа Бога и Спаса нашего Иисуса Христа, или Святое Богоявление, празднуется Православной Церковью 19 января по новому стилю. Накануне праздника, 18 января, отмечается день Навечерия Богоявления Господня или Крещенский сочельник, устан...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/171/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -1179,21 +1089,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "den-transformatsionnykh-igr",
-    "date": "02-02",
-    "title": "День трансформационных игр",
-    "description": "Игра – лучший способ попробовать делать то, чего никогда не делал. Дети играют с рождения, для них это способ познания мира, приобретения нового опыта, развития духовных и физических сил. Взрослые в глубине души – те же дети. Несмотря на возраст,...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/3796/",
-    "category": "family",
-    "categoryLabel": "Семейные",
-    "icon": "👨‍👩‍👧‍👦",
-    "calendar": "secular",
-    "type": "family",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "vsemirnyy-den-borby-s-nenormativnoy-leksikoy",
     "date": "02-03",
     "title": "Всемирный день борьбы с ненормативной лексикой",
@@ -1694,36 +1589,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "sretenie-gospodne",
-    "date": "02-15",
-    "title": "Сретение Господне",
-    "description": "Сретение Господа Нашего Иисуса Христа — христианский праздник, отмечаемый в православии, католицизме и некоторых протестантских конфессиях, в том числе и в лютеранстве, на 40-й день после Рождества Христова. Существуют сведения, что его отмечали уже ...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/172/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "maslenitsa",
-    "date": "02-16",
-    "title": "Масленица",
-    "description": "Масленица — древний славянский праздник с многочисленными обычаями, через века дошедший до наших дней. Отмечается в течение недели перед Великим постом. Масленичная неделя в 2026 году отмечается с 16 по 22 февраля. В православии она именуется Сырной ...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1246/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "secular",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "den-razvedki-voenno-morskogo-flota-rossii",
     "date": "02-16",
     "title": "День разведки Военно-Морского Флота России",
@@ -1749,21 +1614,6 @@ const occasions = [
     "icon": "👔",
     "calendar": "secular",
     "type": "professional",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "novyy-god-po-lunnomu-kalendaryu",
-    "date": "02-17",
-    "title": "Новый год по лунному календарю",
-    "description": "Новый год — самый длинный и самый важный праздник в китайском (лунном) календаре. Фестивали, гулянья, приуроченные к этому празднику, длятся 15 дней. Он приходится на второе новолуние после зимнего солнцестояния, на период между 12 января и 19 феврал...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/364/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "secular",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -1839,21 +1689,6 @@ const occasions = [
     "icon": "✈️",
     "calendar": "secular",
     "type": "travel",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "mardi-gra",
-    "date": "02-17",
-    "title": "Марди Гра",
-    "description": "Марди Гра (фр. Mardi Gras) — в дословном переводе с французского это звучное словосочетание означает «жирный вторник» или даже «скоромный вторник» (англ. Shrove Tuesday). Праздник отмечается во многих западных странах во вторник, перед Пепельной сред...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/943/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "secular",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -2884,21 +2719,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "den-pravoslavnoy-knigi",
-    "date": "03-14",
-    "title": "День православной книги",
-    "description": "14 марта в России празднуется День православной книги. Приобщение к духовным основам и укрепление нравственности ставились во главу угла, при рассмотрении вопроса о развитии влияния христианской проповеди через книгу на заседании Священного Синода Ру...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/3354/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "mezhdunarodnyy-den-rek",
     "date": "03-14",
     "title": "Международный день рек",
@@ -3204,21 +3024,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "navruz",
-    "date": "03-20",
-    "title": "Навруз",
-    "description": "Весенний новогодний праздник равноденствия — Навруз, зародившись в Хорасане (историческая область на северо-востоке Ирана) более 3000 лет назад, почти одновременно с возникновением земледелия, распространился по всем сопредельным странам. В настоящее...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/264/",
-    "category": "nature",
-    "categoryLabel": "Природа",
-    "icon": "🌿",
-    "calendar": "secular",
-    "type": "nature",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "mezhdunarodnyy-den-schastya",
     "date": "03-20",
     "title": "Международный день счастья",
@@ -3319,21 +3124,6 @@ const occasions = [
     "icon": "🎭",
     "calendar": "secular",
     "type": "culture",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "mezhdunarodnyy-den-navruz",
-    "date": "03-21",
-    "title": "Международный день Навруз",
-    "description": "Международный день Навруз (англ. International Day of Nowruz) отмечается с 2010 года. С предложением ввести новую дату в календарь ООН выступили правительства нескольких государств: Азербайджана, Албании, Афганистана, Македонии, Индии, Ирана, Казахст...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/2792/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "secular",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -4048,21 +3838,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "lazareva-subbota",
-    "date": "04-04",
-    "title": "Лазарева суббота",
-    "description": "Лазарева суббота у православных христиан — это суббота перед Вербным воскресеньем, суббота шестой недели Великого поста. В этот день православная Церковь вспоминает чудо воскрешения Христом праведного Лазаря. Само празднование Лазаревой субботы у...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1843/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "mezhdunarodnyy-den-prosvescheniya-po-voprosam-minnoy-opasnosti-i-pomoschi-v-deyatelnosti-svyazannoy-s-razminirovaniem",
     "date": "04-04",
     "title": "Международный день просвещения по вопросам минной опасности и помощи в деятельности, связанной с разминированием",
@@ -4088,21 +3863,6 @@ const occasions = [
     "icon": "🌿",
     "calendar": "secular",
     "type": "nature",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "verbnoe-voskresene",
-    "date": "04-05",
-    "title": "Вербное Воскресенье",
-    "description": "И когда вошел Он в Иерусалим, весь город пришел в движение и говорил: кто Сей? Народ же говорил: Сей есть Иисус, Пророк из Назарета Галилейского.Евангелие от Матфея, 21, 10-11Вход Господень в Иерусалим (Вербное Воскресенье) — это один из перехо...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/183/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -4188,21 +3948,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "velikiy-ponedelnik",
-    "date": "04-06",
-    "title": "Великий Понедельник",
-    "description": "Великий Понедельник — понедельник Страстной недели Великого поста, особого периода в церковном календаре. Страстная неделя посвящена воспоминанию последних дней земной жизни Спасителя, Его страданиям на Кресте, смерти и погребению. По величию и в...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1917/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "den-obrazovaniya-organov-predvaritelnogo-sledstviya-v-sisteme-mvd-rossii",
     "date": "04-06",
     "title": "День образования органов предварительного следствия в системе МВД России",
@@ -4263,21 +4008,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "blagoveschenie-presvyatoy-bogoroditsy",
-    "date": "04-07",
-    "title": "Благовещение Пресвятой Богородицы",
-    "description": "Благовещение Пресвятой Богородицы — светлый христианский праздник, который православная церковь отмечает 7 апреля (по новому стилю), и в православии он входит в число двунадесятых праздников.В древности празднику Благовещения давали разные назван...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/173/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "den-rossiyskoy-animatsii",
     "date": "04-08",
     "title": "День российской анимации",
@@ -4318,21 +4048,6 @@ const occasions = [
     "icon": "🎭",
     "calendar": "secular",
     "type": "culture",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "velikiy-chetverg",
-    "date": "04-09",
-    "title": "Великий Четверг",
-    "description": "И, взяв хлеб и благодарив, преломил и подал им, говоря: сие есть тело Мое, которое за вас предается; сие творите в Мое воспоминание.Евангелие от Луки, 22:19На неделе перед Пасхой для православных христиан наступает Великий (Чистый) Четверг, или...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/2603/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -4418,21 +4133,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "velikaya-pyatnitsa",
-    "date": "04-10",
-    "title": "Великая Пятница",
-    "description": "Пилат говорит им: что же я сделаю Иисусу, называемому Христом?Говорят ему все: да будет распят.Евангелие от Матфея, 27:22Великая Пятница (Великий Пяток) — пятница Страстной недели, которая посвящена воспоминанию Святых спасительных Стра...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1915/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "mezhdunarodnyy-den-osvobozhdeniya-uznikov-fashistskikh-kontslagerey",
     "date": "04-11",
     "title": "Международный день освобождения узников фашистских концлагерей",
@@ -4473,21 +4173,6 @@ const occasions = [
     "icon": "🏛️",
     "calendar": "secular",
     "type": "official",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "paskha",
-    "date": "04-12",
-    "title": "Пасха",
-    "description": "Христос Воскресе! Воистину Воскресе!Светлое Христово Воскресение — самый большой и светлый христианский праздник, установленный в честь воскрешения Иисуса Христа. Этот праздник еще называют Пасхою Христовой, то есть Днем, в который сове...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/182/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -4968,21 +4653,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "radonitsa",
-    "date": "04-21",
-    "title": "Радоница",
-    "description": "Во вторник второй недели после Пасхи, через день после Фоминого воскресенья (или Антипасхи), Православная Церковь установила день поминовения усопших, первый после праздника Пасхи.Этот день называется Радоницей и считается Пасхой для усопших....",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1908/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "vsemirnyy-den-tvorchestva-i-innovatsionnoy-deyatelnosti",
     "date": "04-21",
     "title": "Всемирный день творчества и инновационной деятельности",
@@ -5048,21 +4718,6 @@ const occasions = [
     "title": "Всемирный день настольного тенниса",
     "description": "Международный спортивный праздник – Всемирный день настольного тенниса (англ. World Table Tennis Day) – впервые отмечался в 2015 году и очень быстро стал популярным во многих странах. Инициатором учреждения этой даты выступила Международная Федер...",
     "sourceUrl": "https://www.calend.ru/holidays/0/0/3292/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "secular",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "mezhdunarodnyy-den-devushki-v-ikt",
-    "date": "04-23",
-    "title": "Международный день «Девушки в ИКТ»",
-    "description": "Начиная с 2011 года, ежегодно каждый четвёртый четверг апреля отмечается Международный день «Девушки в ИКТ» (англ. International Girls in ICT Day).Праздник этот был инициирован МСЭ – Международным Союзом Электросвязи (англ. International Telecomm...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/3720/",
     "category": "tradition",
     "categoryLabel": "Традиции",
     "icon": "🎄",
@@ -5252,21 +4907,6 @@ const occasions = [
     "icon": "👔",
     "calendar": "secular",
     "type": "lastWeekday",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "vsemirnyy-den-taytszi-i-tsigun",
-    "date": "04-25",
-    "title": "Всемирный день Тайцзи и Цигун",
-    "description": "Всемирный день Тайцзи и Цигун (англ. World Tai Chi and Qigong Day) получил статус международного в 1999 году. А первый публичный показ, послуживший вдохновителем развития глобальных мероприятий, состоялся в 1998 году в Канзасе штата Миссури, США. Осн...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/536/",
-    "category": "hobby",
-    "categoryLabel": "Хобби",
-    "icon": "🎯",
-    "calendar": "secular",
-    "type": "hobby",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -5606,21 +5246,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "den-vesak",
-    "date": "05-01",
-    "title": "День Весак",
-    "description": "«Хочешь изменить мир? Начни с себя» — такой смысл несет в себе День Весак (англ. Vesak Day). Этот праздник приходится на майское полнолуние и является самым священным днем для миллионов буддистов всего мира. Считается, что именно в день Весак 2,5...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/3153/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "secular",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "vsemirnyy-den-tuntsa",
     "date": "05-02",
     "title": "Всемирный день тунца",
@@ -5801,21 +5426,6 @@ const occasions = [
     "icon": "👔",
     "calendar": "secular",
     "type": "professional",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "den-svyatogo-georgiya-pobedonostsa",
-    "date": "05-06",
-    "title": "День святого Георгия Победоносца",
-    "description": "6 мая весь православный мир чтит память Святого Георгия Победоносца. Традиционно в честь праздника Патриарх Московский и всея Руси совершает праздничное богослужение в храме святого Георгия на Поклонной горе в Москве.Георгий был сыном богатых и б...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1248/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -7120,21 +6730,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "troitsa",
-    "date": "05-31",
-    "title": "Троица",
-    "description": "Один из главных христианских праздников — День Святой Троицы — отмечается на 50-й день после Пасхи. В православии он относится к числу двунадесятых праздников, входит в так называемую «цветную триодь» (цикл пасхальных праздников) и зависит от даты Св...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/185/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "vsemirnyy-den-bez-tabaka",
     "date": "05-31",
     "title": "Всемирный день без табака",
@@ -7314,21 +6909,6 @@ const occasions = [
     "icon": "🏛️",
     "calendar": "secular",
     "type": "official",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "den-svyatogo-dukha",
-    "date": "06-01",
-    "title": "День Святого Духа",
-    "description": "В следующий за Троицей понедельник совершается праздник в честь Святого Духа, или Духов день – церковный праздник, в православной традиции продолжающий торжества в честь Святой Троицы.Этот праздник был установлен Церковью «ради величия Пресвятаго...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/2619/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -9222,21 +8802,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "rozhdestvo-ioanna-predtechi",
-    "date": "07-07",
-    "title": "Рождество Иоанна Предтечи",
-    "description": "Рождество честного славного Пророка, Предтечи и Крестителя Господня Иоанна – один из великих христианских праздников, который отмечается всем православным миром 7 июля по новому стилю. В этот день верующие вспоминают, как в семье иудейского священник...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/2062/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "vsemirnyy-den-yazyka-suakhili",
     "date": "07-07",
     "title": "Всемирный день языка суахили",
@@ -9511,21 +9076,6 @@ const occasions = [
     "categoryLabel": "Традиции",
     "icon": "🎄",
     "calendar": "secular",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "prazdnik-apostolov-petra-i-pavla",
-    "date": "07-12",
-    "title": "Праздник апостолов Петра и Павла",
-    "description": "12 июля православная церковь отмечает День славных и всехвальных первоверховных апостолов Петра и Павла. В этот день заканчивается Петров пост, если только праздник святых апостолов Петра и Павла не попадает на среду или пятницу.Этот христианский...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1424/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
     "type": "tradition",
     "priority": 80,
     "congratulatable": true,
@@ -10745,21 +10295,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "rozhdestvo-svyatitelya-nikolaya-chudotvortsa",
-    "date": "08-11",
-    "title": "Рождество святителя Николая Чудотворца",
-    "description": "11 августа Русская Православная Церковь празднует Рождество святителя Николая Чудотворца, епископа Мир Ликийских. Это один из самых почитаемых святых на Руси. Надо сказать, что помимо двух основных праздников, посвященных святителю Николаю, празд...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/3176/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "secular",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "vsemirnyy-den-stalnogo-barabana",
     "date": "08-11",
     "title": "Всемирный день стального барабана",
@@ -10815,21 +10350,6 @@ const occasions = [
     "icon": "💻",
     "calendar": "secular",
     "type": "technology",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "prazdnik-proiskhozhdeniya-izneseniya-chestnykh-drev-zhivotvoryaschego-kresta-gospodnya",
-    "date": "08-14",
-    "title": "Праздник происхождения (изнесения) честных древ Животворящего Креста Господня",
-    "description": "14 августа, в первый день Успенского поста, Православная Церковь празднует происхождение (изнесение) честных древ Животворящего Креста Господня. С того времени, как Сын Божий освятил Крест Своими страданиями, в нем стала проявляться необыкновенна...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1444/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -11030,21 +10550,6 @@ const occasions = [
     "icon": "💛",
     "calendar": "secular",
     "type": "kindness",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "preobrazhenie-gospodne",
-    "date": "08-19",
-    "title": "Преображение Господне",
-    "description": "19 августа Русская Православная церковь празднует большой христианский праздник — Преображение Господа Бога и Спаса нашего Иисуса Христа. Он принадлежит к числу двунадесятых великих праздников.Чтобы явить Своим ученикам эту Небесную духовную слав...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/175/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -11315,21 +10820,6 @@ const occasions = [
     "icon": "👔",
     "calendar": "secular",
     "type": "professional",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "uspenie-presvyatoy-bogoroditsy",
-    "date": "08-28",
-    "title": "Успение Пресвятой Богородицы",
-    "description": "Праздник Успения (кончины) Пресвятой Владычицы нашей Богородицы и Приснодевы Марии значится одним из двенадцати (двунадесятых) главных праздников Православной церкви. Он предваряется строгим Успенским постом и празднуется Православной Церковью по нов...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1476/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -12089,21 +11579,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "den-sotrudnichestva-yug-yug-organizatsii-obedinennykh-natsiy",
-    "date": "09-12",
-    "title": "День сотрудничества Юг-Юг Организации Объединенных Наций",
-    "description": "День сотрудничества Юг-Юг Организации Объединенных Наций (англ. United Nations Day for South-South Cooperation) — один из международных дней ООН, который отмечается ежегодно 12 сентября.В этот день в 1978 году в столице Аргентины, городе Буэнос-А...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1892/",
-    "category": "state",
-    "categoryLabel": "Государственные",
-    "icon": "🏛️",
-    "calendar": "secular",
-    "type": "official",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "den-tankista-v-rossii",
     "dateRule": {
       "type": "nthWeekday",
@@ -12169,21 +11644,6 @@ const occasions = [
     "icon": "🌿",
     "calendar": "secular",
     "type": "nthWeekday",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "tserkovnoe-novoletie-nachalo-indikta",
-    "date": "09-14",
-    "title": "Церковное новолетие — начало индикта",
-    "description": "Пожалуй, самым незаметным православным праздником является Церковное новолетие, которое в церковном календаре торжественно именуется «началом индикта» и празднуется 14 сентября (1 сентября по старому стилю). Именно эта дата считается первым днем ново...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/2153/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -12569,21 +12029,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "rozhdestvo-presvyatoy-bogoroditsy",
-    "date": "09-21",
-    "title": "Рождество Пресвятой Богородицы",
-    "description": "Рождество Пресвятой Владычицы нашей Богородицы и Приснодевы Марии — важный церковный праздник, в православии он относится к числу двунадесятых, отмечается каждый год 21 сентября и открывает начало церковного года. Праздник установлен Церковью в 4...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/178/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "mezhdunarodnyy-den-rasprostraneniya-informatsii-o-bolezni-altsgeymera",
     "date": "09-21",
     "title": "Международный день распространения информации о болезни Альцгеймера",
@@ -12951,21 +12396,6 @@ const occasions = [
     "icon": "🌿",
     "calendar": "secular",
     "type": "lastWeekday",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "vozdvizhenie-kresta-gospodnya",
-    "date": "09-27",
-    "title": "Воздвижение Креста Господня",
-    "description": "Воздвижение Честного и Животворящего Креста Господня — двунадесятый праздник, отмечаемый 27 сентября, установлен в память обретения и воздвижения Креста, на котором распяли Христа. Это знаменательное событие произошло при императоре Константине Велик...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1468/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -13486,21 +12916,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "vsemirnyy-den-khabitat",
-    "date": "10-05",
-    "title": "Всемирный день Хабитат",
-    "description": "Ежегодно в первый понедельник октября отмечается установленный Организацией Объединенных Наций (ООН) праздник — Всемирный день Хабитат (англ. World Habitat Day). Одним из близких по смыслу переводов на русский может быть — Всемирный день жилища (мест...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/583/",
-    "category": "social",
-    "categoryLabel": "Общие",
-    "icon": "🌍",
-    "calendar": "secular",
-    "type": "social",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "den-sotrudnikov-ugolovnogo-rozyska-mvd-rossii",
     "date": "10-05",
     "title": "День сотрудников уголовного розыска МВД России",
@@ -13876,21 +13291,6 @@ const occasions = [
     "icon": "🌍",
     "calendar": "secular",
     "type": "social",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "pokrov-presvyatoy-bogoroditsy",
-    "date": "10-14",
-    "title": "Покров Пресвятой Богородицы",
-    "description": "Великий праздник Русской Православной Церкви — Покров Пресвятой Владычицы нашей Богородицы и Приснодевы Марии празднуется ежегодно 14 октября по новому стилю (1 октября — по старому).Это главный осенний праздник, история которого восходит к 910 г...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1475/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -14411,21 +13811,6 @@ const occasions = [
     "icon": "🌍",
     "calendar": "secular",
     "type": "social",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "den-temari",
-    "date": "10-22",
-    "title": "День темари",
-    "description": "22 октября отмечается День темари – праздник в честь затейливо расшитых нитками шаров. Темари – это необычное сочетание искусства, геометрии и добрых пожеланий. Эти яркие шары пришли к нам из Японии, восхищая мастерством исполнения и философией изгот...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/4008/",
-    "category": "culture",
-    "categoryLabel": "Культура",
-    "icon": "🎭",
-    "calendar": "secular",
-    "type": "culture",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -15000,21 +14385,6 @@ const occasions = [
     "icon": "👔",
     "calendar": "secular",
     "type": "professional",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "tykvennyy-spas",
-    "date": "10-31",
-    "title": "Тыквенный спас",
-    "description": "У кого-то сегодня Хэллоуин, а у нас — Тыквенный Спас! Новый веселый и добрый народный праздник, идея которого уже давно витала в воздухе и обсуждалась людьми в соцсетях. Где-то его отмечают уже не первый год, а где-то — еще и не слышали. Почему б...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/3795/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "secular",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -16490,21 +15860,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "chernaya-pyatnitsa",
-    "date": "11-27",
-    "title": "Черная пятница",
-    "description": "Ежегодно в первую пятницу после американского Дня Благодарения (обычно — это последняя неделя ноября) стартует знаменитая Чёрная пятница (англ. Black Friday) — день, который совсем не соответствует своему мрачному названию. Ведь Чёрная пятница — это ...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/3277/",
-    "category": "kindness",
-    "categoryLabel": "Добрые поводы",
-    "icon": "💛",
-    "calendar": "secular",
-    "type": "kindness",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "vsemirnyy-den-otkaza-ot-pokupok",
     "date": "11-27",
     "title": "Всемирный день отказа от покупок",
@@ -16948,21 +16303,6 @@ const occasions = [
     "recipients": []
   },
   {
-    "id": "vvedenie-vo-khram-presvyatoy-bogoroditsy",
-    "date": "12-04",
-    "title": "Введение во храм Пресвятой Богородицы",
-    "description": "Великий христианский праздник Введение во храм Пресвятой Владычицы нашей Богородицы и Приснодевы Марии относится к двунадесятым непереходящим праздникам Православной Церкви и отмечается 4 декабря по новому стилю. Основанием служит церковное преда...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1649/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
     "id": "den-informatiki-v-rossii",
     "date": "12-04",
     "title": "День информатики в России",
@@ -17128,21 +16468,6 @@ const occasions = [
     "icon": "👔",
     "calendar": "secular",
     "type": "nthWeekday",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "den-pamyati-velikogo-knyazya-aleksandra-nevskogo",
-    "date": "12-06",
-    "title": "День памяти великого князя Александра Невского",
-    "description": "Великий князь Александр Невский — талантливый полководец, дипломат, мудрый и сильный правитель — все силы положил на защиту Русской Земли от иноземных захватчиков. Православная Церковь прославила князя и за кроткое служение ближним и милостивую помощ...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1569/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -17458,21 +16783,6 @@ const occasions = [
     "icon": "🌿",
     "calendar": "secular",
     "type": "nature",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "den-svyatogo-apostola-andreya-pervozvannogo",
-    "date": "12-13",
-    "title": "День святого апостола Андрея Первозванного",
-    "description": "13 декабря (по новому стилю) Русская Православная церковь чтит память Апостола Андрея Первозванного – одного из двенадцати апостолов. Прозвали же его так, потому что именно его Спаситель позвал первым вслед за собой для несения проповеди по городам и...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1655/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
@@ -17973,21 +17283,6 @@ const occasions = [
     "icon": "🏛️",
     "calendar": "secular",
     "type": "official",
-    "priority": 80,
-    "congratulatable": true,
-    "recipients": []
-  },
-  {
-    "id": "rozhdestvo-po-novoyulianskomu-kalendaryu",
-    "date": "12-25",
-    "title": "Рождество по Новоюлианскому календарю",
-    "description": "День Рождения Иисуса Христа является одним из главных христианских праздников. В этот день — 25 декабря — Рождество празднуют не только западные, но и целый ряд православных церквей мира, принявших в начале 20-х годов 20 века Новоюлианский календарь ...",
-    "sourceUrl": "https://www.calend.ru/holidays/0/0/1842/",
-    "category": "tradition",
-    "categoryLabel": "Традиции",
-    "icon": "🎄",
-    "calendar": "orthodox",
-    "type": "tradition",
     "priority": 80,
     "congratulatable": true,
     "recipients": []
