@@ -1,0 +1,132 @@
+﻿[
+    {
+        "name":  "balloons",
+        "id":  "balloons",
+        "src":  "/images/occasions/balloons.webp"
+    },
+    {
+        "name":  "birthday-cake",
+        "id":  "birthday-cake",
+        "src":  "/images/occasions/birthday-cake.webp"
+    },
+    {
+        "name":  "bouquet",
+        "id":  "bouquet",
+        "src":  "/images/occasions/bouquet.webp"
+    },
+    {
+        "name":  "champagne-glasses",
+        "id":  "champagne-glasses",
+        "src":  "/images/occasions/champagne-glasses.webp"
+    },
+    {
+        "name":  "christmas-tree",
+        "id":  "christmas-tree",
+        "src":  "/images/occasions/christmas-tree.webp"
+    },
+    {
+        "name":  "culture-01",
+        "id":  "culture-01",
+        "src":  "/images/occasions/culture-01.webp"
+    },
+    {
+        "name":  "culture-02",
+        "id":  "culture-02",
+        "src":  "/images/occasions/culture-02.webp"
+    },
+    {
+        "name":  "culture-03",
+        "id":  "culture-03",
+        "src":  "/images/occasions/culture-03.webp"
+    },
+    {
+        "name":  "culture-04",
+        "id":  "culture-04",
+        "src":  "/images/occasions/culture-04.webp"
+    },
+    {
+        "name":  "family-01",
+        "id":  "family-01",
+        "src":  "/images/occasions/family-01.webp"
+    },
+    {
+        "name":  "family-02",
+        "id":  "family-02",
+        "src":  "/images/occasions/family-02.webp"
+    },
+    {
+        "name":  "family-03",
+        "id":  "family-03",
+        "src":  "/images/occasions/family-03.webp"
+    },
+    {
+        "name":  "family-04",
+        "id":  "family-04",
+        "src":  "/images/occasions/family-04.webp"
+    },
+    {
+        "name":  "fireworks",
+        "id":  "fireworks",
+        "src":  "/images/occasions/fireworks.webp"
+    },
+    {
+        "name":  "gift-blue",
+        "id":  "gift-blue",
+        "src":  "/images/occasions/gift-blue.webp"
+    },
+    {
+        "name":  "gift-pink",
+        "id":  "gift-pink",
+        "src":  "/images/occasions/gift-pink.webp"
+    },
+    {
+        "name":  "halloween-pumpkin",
+        "id":  "halloween-pumpkin",
+        "src":  "/images/occasions/halloween-pumpkin.webp"
+    },
+    {
+        "name":  "heart",
+        "id":  "heart",
+        "src":  "/images/occasions/heart.webp"
+    },
+    {
+        "name":  "holiday-bell",
+        "id":  "holiday-bell",
+        "src":  "/images/occasions/holiday-bell.webp"
+    },
+    {
+        "name":  "love-letter",
+        "id":  "love-letter",
+        "src":  "/images/occasions/love-letter.webp"
+    },
+    {
+        "name":  "masquerade-mask",
+        "id":  "masquerade-mask",
+        "src":  "/images/occasions/masquerade-mask.webp"
+    },
+    {
+        "name":  "party-hat",
+        "id":  "party-hat",
+        "src":  "/images/occasions/party-hat.webp"
+    },
+    {
+        "name":  "snowman",
+        "id":  "snowman",
+        "src":  "/images/occasions/snowman.webp"
+    },
+    {
+        "name":  "teddy-bear",
+        "id":  "teddy-bear",
+        "src":  "/images/occasions/teddy-bear.webp"
+    },
+    {
+        "name":  "universal-01",
+        "id":  "universal-01",
+        "src":  "/images/occasions/universal-01.webp"
+    },
+    {
+        "name":  "universal-04",
+        "id":  "universal-04",
+        "src":  "/images/occasions/universal-04.webp"
+    }
+]

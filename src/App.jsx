@@ -3063,40 +3063,55 @@ function App() {
 
             <div className="congratulate-modal-actions">
               {congratulateOccasions.map((occasion) => (
-                <button
+                <div
+                  className="congratulate-choice-wrap"
                   key={occasion.id}
-                  type="button"
-                  className="congratulate-choice"
-                  onClick={() => {
-                    setCongratulateOccasions([])
-                    setCardCreatorOccasion(occasion)
-                  }}
                 >
-                  <span className="congratulate-choice-icon">
-                    {occasion.imageUrl ? (
-                      <img
-                        src={occasion.imageUrl}
-                        alt=""
-                      />
-                    ) : (
-                      occasion.icon
-                    )}
-                  </span>
+                  <button
+                    type="button"
+                    className="congratulate-choice"
+                    onClick={() => {
+                      setCongratulateOccasions([])
+                      setCardCreatorOccasion(occasion)
+                    }}
+                  >
+                    <span className="congratulate-choice-icon">
+                      {occasion.imageUrl ? (
+                        <img
+                          src={occasion.imageUrl}
+                          alt=""
+                        />
+                      ) : (
+                        occasion.icon
+                      )}
+                    </span>
 
-                  <span>
-                    <strong>
-                      {occasion.title}
-                    </strong>
+                    <span>
+                      <strong>
+                        {occasion.title}
+                      </strong>
 
-                    {occasion.description && (
-                      <small>
-                        {occasion.description}
-                      </small>
-                    )}
-                  </span>
+                      {occasion.description && (
+                        <small>
+                          {occasion.description}
+                        </small>
+                      )}
+                    </span>
 
-                  <span>→</span>
-                </button>
+                    <span>→</span>
+                  </button>
+
+                  {occasion.infoUrl && (
+                    <a
+                      className="occasion-info-link"
+                      href={occasion.infoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {occasion.infoLabel || 'Подробнее о празднике'}
+                    </a>
+                  )}
+                </div>
               ))}
             </div>
 

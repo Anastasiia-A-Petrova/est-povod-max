@@ -1,6 +1,10 @@
 import { useMemo, useState } from 'react'
 import { toBlob } from 'html-to-image'
 import './CardCreator.css'
+import occasionImages from '../data/occasion-images.json'
+
+const getOccasionImageSrc = (src) =>
+  `${import.meta.env.BASE_URL}${src.replace(/^\//, '')}`
 
 const API_URL =
   'https://est-povod-max-api.layero.app'
@@ -427,6 +431,8 @@ function CardCreator({
         : 140,
     )
 
+  const [selectedOccasionImage, setSelectedOccasionImage] = useState(null)
+
   const [greetingIndex, setGreetingIndex] =
     useState(0)
 
@@ -450,6 +456,18 @@ function CardCreator({
 
   const isOrthodox =
     occasion.calendar === 'orthodox'
+
+  const occasionKey =
+    occasion.id ??
+    occasion.date ??
+    `${occasion.calendar || 'secular'}:${occasion.title}`
+
+  const activeOccasionImage =
+    selectedOccasionImage?.occasionKey === occasionKey
+      ? occasionImages.find(
+          (image) => image.id === selectedOccasionImage.imageId,
+        ) || null
+      : null
 
   const selectedBrightColor = useMemo(
     () =>
@@ -1429,7 +1447,13 @@ function CardCreator({
   )
 
   const renderOccasionImage = () => {
-    if (!occasion.imageUrl) {
+  const imageSrc = isOrthodox
+    ? occasion.imageUrl
+    : activeOccasionImage
+      ? getOccasionImageSrc(activeOccasionImage.src)
+      : null
+
+    if (!imageSrc) {
       return null
     }
 
@@ -1441,7 +1465,7 @@ function CardCreator({
         }}
       >
         <img
-          src={occasion.imageUrl}
+          src={imageSrc}
           alt={occasion.title}
         />
       </div>
@@ -1938,92 +1962,148 @@ function CardCreator({
               )}
             </div>
 
-            {occasion.imageUrl && (
+            {(!isOrthodox || occasion.imageUrl) && (
               <div className="editor-section image-editor">
-                <div className="editor-section-heading">
-                  <div>
-                    <div className="option-label">
-                      ИЗОБРАЖЕНИЕ
-                    </div>
+                {!isOrthodox && (
+                  <>
+                    <div className="editor-section-heading">
+                      <div>
+                        <div className="option-label">
+                          ИЗОБРАЖЕНИЕ
+                        </div>
 
-                    <span>
-                      Настрой форму и размер
-                    </span>
-                  </div>
-                </div>
+                        <span>
+                          Выбери украшение для открытки
+                        </span>
+                      </div>
 
-                <div className="image-editor-group">
-                  <span className="image-editor-label">
-                    Форма
-                  </span>
-
-                  <div className="image-shape-options">
-                    {IMAGE_SHAPES.map(
-                      (shape) => (
+                      {activeOccasionImage && (
                         <button
                           type="button"
-                          key={shape.id}
-                          className={`image-shape-option ${
-                            imageShape ===
-                            shape.id
+                          className="change-greeting-button"
+                          onClick={() =>
+                            setSelectedOccasionImage(null)
+                          }
+                        >
+                          Убрать изображение
+                        </button>
+                      )}
+                    </div>
+
+                    {!activeOccasionImage && (
+                      <p className="creator-description">
+                        Выбери одну картинку. Она появится на открытке.
+                      </p>
+                    )}
+
+                    <div className="occasion-image-grid">
+                      {occasionImages.map((image) => (
+                        <button
+                          type="button"
+                          key={image.id}
+                          className={`occasion-image-option ${
+                            activeOccasionImage?.id === image.id
                               ? 'selected'
                               : ''
                           }`}
                           onClick={() =>
-                            setImageShape(
-                              shape.id,
-                            )
+                            setSelectedOccasionImage({
+                              occasionKey,
+                              imageId: image.id,
+                            })
                           }
-                          aria-label={
-                            shape.name
+                          aria-label={`Выбрать изображение: ${image.name}`}
+                          aria-pressed={
+                            activeOccasionImage?.id === image.id
                           }
                         >
-                          <span
-                            className={`shape-preview ${shape.className}`}
+                          <img
+                            src={getOccasionImageSrc(image.src)}
+                            alt={image.name}
                           />
-
-                          <span>
-                            {shape.name}
-                          </span>
                         </button>
-                      ),
-                    )}
-                  </div>
-                </div>
+                      ))}
+                    </div>
+                  </>
+                )}
 
-                <div className="image-editor-group image-size-group">
-                  <div className="image-size-header">
-                    <span className="image-editor-label">
-                      Размер
-                    </span>
+                {(isOrthodox ? occasion.imageUrl : activeOccasionImage) && (
+                  <>
+                    <div className="editor-section-heading">
+                      <div>
+                        <div className="option-label">
+                          НАСТРОЙКИ ИЗОБРАЖЕНИЯ
+                        </div>
 
-                    <strong>
-                      {imageSize}px
-                    </strong>
-                  </div>
+                        <span>
+                          Настрой форму и размер
+                        </span>
+                      </div>
+                    </div>
 
-                  <input
-                    type="range"
-                    min="60"
-                    max="300"
-                    step="5"
-                    value={imageSize}
-                    onChange={(event) =>
-                      setImageSize(
-                        Number(
-                          event.target.value,
-                        ),
-                      )
-                    }
-                    className="image-size-range"
-                    aria-label="Размер изображения"
-                  />
+                    <div className="image-editor-group">
+                      <span className="image-editor-label">
+                        Форма
+                      </span>
 
-                  <div className="image-size-hints">
-                    <span>60 px</span>
-                    <span>300 px</span>
-                  </div>
-                </div>
+                      <div className="image-shape-options">
+                        {IMAGE_SHAPES.map((shape) => (
+                          <button
+                            type="button"
+                            key={shape.id}
+                            className={`image-shape-option ${
+                              imageShape === shape.id
+                                ? 'selected'
+                                : ''
+                            }`}
+                            onClick={() =>
+                              setImageShape(shape.id)
+                            }
+                            aria-label={shape.name}
+                          >
+                            <span
+                              className={`shape-preview ${shape.className}`}
+                            />
+
+                            <span>
+                              {shape.name}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="image-editor-group image-size-group">
+                      <div className="image-size-header">
+                        <span className="image-editor-label">
+                          Размер
+                        </span>
+
+                        <strong>
+                          {imageSize}px
+                        </strong>
+                      </div>
+
+                      <input
+                        type="range"
+                        min="60"
+                        max="300"
+                        step="5"
+                        value={imageSize}
+                        onChange={(event) =>
+                          setImageSize(Number(event.target.value))
+                        }
+                        className="image-size-range"
+                        aria-label="Размер изображения"
+                      />
+
+                      <div className="image-size-hints">
+                        <span>60 px</span>
+                        <span>300 px</span>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             )}
 

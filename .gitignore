@@ -53,3 +53,7 @@ test-*.js
 
 # Personal notes
 /запуск.docx
+
+# Local backups and test files
+*.backup
+cloudflare-test.png
