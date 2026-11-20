@@ -1,5 +1,155 @@
 ﻿[
     {
+        "name":  "01-bouquet",
+        "id":  "01-bouquet",
+        "src":  "/images/occasions/01-bouquet.webp"
+    },
+    {
+        "name":  "02-birthday-cake",
+        "id":  "02-birthday-cake",
+        "src":  "/images/occasions/02-birthday-cake.webp"
+    },
+    {
+        "name":  "03-balloons",
+        "id":  "03-balloons",
+        "src":  "/images/occasions/03-balloons.webp"
+    },
+    {
+        "name":  "04-gifts",
+        "id":  "04-gifts",
+        "src":  "/images/occasions/04-gifts.webp"
+    },
+    {
+        "name":  "05-sleeping-kitten",
+        "id":  "05-sleeping-kitten",
+        "src":  "/images/occasions/05-sleeping-kitten.webp"
+    },
+    {
+        "name":  "06-coffee-and-cookies",
+        "id":  "06-coffee-and-cookies",
+        "src":  "/images/occasions/06-coffee-and-cookies.webp"
+    },
+    {
+        "name":  "07-happy-dog",
+        "id":  "07-happy-dog",
+        "src":  "/images/occasions/07-happy-dog.webp"
+    },
+    {
+        "name":  "08-travel",
+        "id":  "08-travel",
+        "src":  "/images/occasions/08-travel.webp"
+    },
+    {
+        "name":  "09-lighthouse",
+        "id":  "09-lighthouse",
+        "src":  "/images/occasions/09-lighthouse.webp"
+    },
+    {
+        "name":  "10-wildflowers",
+        "id":  "10-wildflowers",
+        "src":  "/images/occasions/10-wildflowers.webp"
+    },
+    {
+        "name":  "11-books",
+        "id":  "11-books",
+        "src":  "/images/occasions/11-books.webp"
+    },
+    {
+        "name":  "12-painting",
+        "id":  "12-painting",
+        "src":  "/images/occasions/12-painting.webp"
+    },
+    {
+        "name":  "13-music",
+        "id":  "13-music",
+        "src":  "/images/occasions/13-music.webp"
+    },
+    {
+        "name":  "14-hot-air-balloon",
+        "id":  "14-hot-air-balloon",
+        "src":  "/images/occasions/14-hot-air-balloon.webp"
+    },
+    {
+        "name":  "15-vintage-camera",
+        "id":  "15-vintage-camera",
+        "src":  "/images/occasions/15-vintage-camera.webp"
+    },
+    {
+        "name":  "16-moscow-kremlin",
+        "id":  "16-moscow-kremlin",
+        "src":  "/images/occasions/16-moscow-kremlin.webp"
+    },
+    {
+        "name":  "17-russian-flag",
+        "id":  "17-russian-flag",
+        "src":  "/images/occasions/17-russian-flag.webp"
+    },
+    {
+        "name":  "18-matryoshka",
+        "id":  "18-matryoshka",
+        "src":  "/images/occasions/18-matryoshka.webp"
+    },
+    {
+        "name":  "19-st-basils-cathedral",
+        "id":  "19-st-basils-cathedral",
+        "src":  "/images/occasions/19-st-basils-cathedral.webp"
+    },
+    {
+        "name":  "20-daisies",
+        "id":  "20-daisies",
+        "src":  "/images/occasions/20-daisies.webp"
+    },
+    {
+        "name":  "21-travel-airplane",
+        "id":  "21-travel-airplane",
+        "src":  "/images/occasions/21-travel-airplane.webp"
+    },
+    {
+        "name":  "22-doctor",
+        "id":  "22-doctor",
+        "src":  "/images/occasions/22-doctor.webp"
+    },
+    {
+        "name":  "23-office-work",
+        "id":  "23-office-work",
+        "src":  "/images/occasions/23-office-work.webp"
+    },
+    {
+        "name":  "24-construction",
+        "id":  "24-construction",
+        "src":  "/images/occasions/24-construction.webp"
+    },
+    {
+        "name":  "25-teacher",
+        "id":  "25-teacher",
+        "src":  "/images/occasions/25-teacher.webp"
+    },
+    {
+        "name":  "26-firefighter",
+        "id":  "26-firefighter",
+        "src":  "/images/occasions/26-firefighter.webp"
+    },
+    {
+        "name":  "27-police",
+        "id":  "27-police",
+        "src":  "/images/occasions/27-police.webp"
+    },
+    {
+        "name":  "28-cinema",
+        "id":  "28-cinema",
+        "src":  "/images/occasions/28-cinema.webp"
+    },
+    {
+        "name":  "29-sport",
+        "id":  "29-sport",
+        "src":  "/images/occasions/29-sport.webp"
+    },
+    {
+        "name":  "30-space",
+        "id":  "30-space",
+        "src":  "/images/occasions/30-space.webp"
+    },
+    {
         "name":  "balloons",
         "id":  "balloons",
         "src":  "/images/occasions/balloons.webp"
