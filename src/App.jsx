@@ -2064,20 +2064,25 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>📱</span>
-              Скачать в RuStore
+              <img
+                className="app-link-rustore-logo"
+                src={`${import.meta.env.BASE_URL}images/social/rustore.svg`}
+                alt=""
+              />
+              <span className="app-link-rustore-copy">
+                <strong>RuStore</strong>
+                <small>Скачать приложение</small>
+              </span>
               <span className="app-link-arrow">↗</span>
             </a>
 
             <a
               className="app-link app-link-max"
-              href="https://max.ru/se14632161_bot"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#app-footer"
             >
               <span>💬</span>
-              Открыть в MAX
-              <span className="app-link-arrow">↗</span>
+              Мы в соцсетях
+              <span className="app-link-arrow">↓</span>
             </a>
           </div>
         </div>
@@ -2869,7 +2874,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="app-footer">
+      <footer className="app-footer" id="app-footer">
         <div className="footer-title">
           ЕСТЬ ПОВОД! 🌞
         </div>
@@ -2879,19 +2884,84 @@ function App() {
             href="https://www.rustore.ru/catalog/app/ru.anastasiia.estpovod"
             target="_blank"
             rel="noopener noreferrer"
+            className="footer-rustore-link"
+            aria-label="Скачать ЕСТЬ ПОВОД! в RuStore"
           >
-            📱 Приложение в RuStore ↗
+            <img
+              src={`${import.meta.env.BASE_URL}images/social/rustore.svg`}
+              alt="RuStore"
+            />
+            <span className="footer-rustore-copy">
+              <strong>RuStore</strong>
+              <small>Скачать приложение</small>
+            </span>
           </a>
 
           <span className="footer-separator">·</span>
+        </div>
 
-          <a
-            href="https://max.ru/se14632161_bot"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            💬 ЕСТЬ ПОВОД! в MAX ↗
-          </a>
+        <div className="footer-socials">
+          <div className="footer-socials-title">
+            Мы в социальных сетях
+          </div>
+
+          <div className="footer-socials-links">
+                        <a
+              href="https://vk.ru/estpovodapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ЕСТЬ ПОВОД! во ВКонтакте"
+              className="footer-social-link footer-social-vk"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}images/social/vk.svg`}
+                alt=""
+                aria-hidden="true"
+              />
+            </a>
+
+            <a
+              href="https://max.ru/channel_estpovodapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ЕСТЬ ПОВОД! в MAX"
+              className="footer-social-link footer-social-max"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}images/social/max.png`}
+                alt=""
+                aria-hidden="true"
+              />
+            </a>
+
+            <a
+              href="https://ok.ru/group/70000060403166"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ЕСТЬ ПОВОД! в Одноклассниках"
+              className="footer-social-link footer-social-ok"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}images/social/ok.svg`}
+                alt=""
+                aria-hidden="true"
+              />
+            </a>
+
+            <a
+              href="https://t.me/estpovodapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="ЕСТЬ ПОВОД! в Telegram"
+              className="footer-social-link footer-social-telegram"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}images/social/telegram.svg`}
+                alt=""
+                aria-hidden="true"
+              />
+            </a>
+          </div>
         </div>
 
         <div className="footer-note">

@@ -2713,6 +2713,14 @@ a {
   box-shadow: 0 3px 10px rgba(198, 83, 135, 0.18);
 }
 
+.app-link-rustore {
+  gap: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 .app-link-max {
   color: #ffffff;
   background: linear-gradient(135deg, #668bd1, #4e70b5);
@@ -2725,6 +2733,31 @@ a {
   opacity: 0.65;
 }
 
+.app-link-rustore-logo {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.app-link-rustore-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+  gap: 3px;
+}
+
+.app-link-rustore-copy strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.app-link-rustore-copy small {
+  font-size: 11px;
+  opacity: 0.8;
+}
 
 /* =========================================================
    FOOTER
@@ -2765,6 +2798,146 @@ a {
 .footer-links a:hover {
   color: #bd7296;
 }
+
+.footer-rustore-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #71849a;
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.footer-rustore-link img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.footer-rustore-link span {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.footer-rustore-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.2;
+}
+
+.footer-rustore-copy strong {
+  font-size: 13px;
+  font-weight: 800;
+  color: #536d91;
+}
+
+.footer-rustore-copy small {
+  font-size: 10px;
+  font-weight: 500;
+  color: #8b969e;
+}
+
+/* СОЦИАЛЬНЫЕ СЕТИ В ФУТЕРЕ */
+
+.footer-socials {
+  margin-top: 22px;
+}
+
+.footer-socials-title {
+  margin-bottom: 12px;
+  color: #8b969e;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.footer-socials-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid transparent;
+  border-radius: 14px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.footer-social-link svg,
+.footer-social-link img {
+  width: 21px;
+  height: 21px;
+  display: block;
+  object-fit: contain;
+}
+
+.footer-social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(50, 60, 80, 0.12);
+}
+
+/* ВКонтакте */
+.footer-social-vk {
+  color: #0077ff;
+  background: #edf5ff;
+  border-color: #dceaff;
+}
+
+/* MAX */
+.footer-social-max {
+  color: #6856d9;
+  background: #f1efff;
+  border-color: #e4dfff;
+}
+
+/* Одноклассники */
+.footer-social-ok {
+  color: #ee8208;
+  background: #fff5e9;
+  border-color: #f8e7d0;
+}
+
+/* Telegram */
+.footer-social-telegram {
+  color: #229ed9;
+  background: #edf8fd;
+  border-color: #d9eef8;
+}
+
+.footer-social-link:focus-visible {
+  outline: 3px solid rgba(95, 145, 163, 0.35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .footer-socials-links {
+    gap: 14px;
+  }
+
+  .footer-social-link {
+    width: 44px;
+    height: 44px;
+  }
+}
+
 
 .footer-separator {
   color: #c5cbd2;
@@ -3033,5 +3206,31 @@ a {
     font-size: 8px;
     line-height: 1.2;
     -webkit-line-clamp: 3;
+  }
+}
+
+/* Одинаковый размер кнопок RuStore и MAX */
+.app-link {
+  height: 42px;
+  min-height: 42px;
+  box-sizing: border-box;
+  padding: 0 16px;
+}
+
+.app-link-rustore {
+  gap: 8px;
+}
+
+.app-link-rustore-logo {
+  width: 22px;
+  height: 22px;
+}
+
+/* Мобильная версия */
+@media (max-width: 480px) {
+  .app-link {
+    height: 40px;
+    min-height: 40px;
+    padding: 0 12px;
   }
 }
